@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace FrenchDesktopScheduler.Forms
 {
-	public partial class LandingPage : Form
+	public partial class EditCustomer : Form
 	{
-		public LandingPage()
+		public EditCustomer()
 		{
 			InitializeComponent();
 		}
 
-		private void loginBackButton_Click(object sender, EventArgs e)
+		private void toLandingButton_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			LoginForm backToLogin = new LoginForm();
-			backToLogin.Show();
+			LandingPage landingPage = new LandingPage();
+			landingPage.Show();
 		}
 
-		private void customerButton_Click(object sender, EventArgs e)
+		private void customerCancelButton_Click(object sender, EventArgs e)
 		{
 			this.Hide();
 			Customer toCustomer = new Customer();
