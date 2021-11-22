@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database Objects\Address.cs" />
     <Compile Include="Database Objects\CustomerTable.cs" />
     <Compile Include="Database Objects\UserTable.cs" />
     <Compile Include="Forms\AddCustomer.cs">
