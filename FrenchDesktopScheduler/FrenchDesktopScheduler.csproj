@@ -90,6 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database Objects\Address.cs" />
+    <Compile Include="Database Objects\Appointment.cs" />
+    <Compile Include="Database Objects\City.cs" />
+    <Compile Include="Database Objects\Country.cs" />
     <Compile Include="Database Objects\CustomerTable.cs" />
     <Compile Include="Database Objects\UserTable.cs" />
     <Compile Include="Forms\AddCustomer.cs">

@@ -49,8 +49,8 @@ namespace FrenchDesktopScheduler
 				cmd.Parameters.AddWithValue("@password", passwordTextBox.Text);
 
 				MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-				DataTable dt = new DataTable();
-				adp.Fill(dt);
+				DataTable userDT = new DataTable();
+				adp.Fill(userDT);
 				
 				//if (dt.Rows.Count > 0)
 				//{

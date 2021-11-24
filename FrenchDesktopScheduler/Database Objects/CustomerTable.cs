@@ -19,13 +19,14 @@ namespace FrenchDesktopScheduler.Database_Objects
 
         private static int count = 0;
 
-        public CustomerTable(int customerId, string customerName, int addressId, byte active, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
+        public CustomerTable(int customerId, string customerName, int addressId, byte active, DateTime createDate, 
+            string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
             CustomerId = customerId;
             count = customerId;
             CustomerName = customerName;
             AddressId = addressId;
-            Active = active;
+            Active = (byte)active;
             CreateDate = createDate;
             CreatedBy = createdBy;
             LastUpdate = lastUpdate;

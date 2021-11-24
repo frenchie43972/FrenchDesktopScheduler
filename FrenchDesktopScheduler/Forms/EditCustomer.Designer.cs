@@ -39,7 +39,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox = new System.Windows.Forms.TextBox();
+			this.custIDTextBox = new System.Windows.Forms.TextBox();
 			this.custAddressTwoLabel = new System.Windows.Forms.Label();
 			this.customerCountryLabel = new System.Windows.Forms.Label();
 			this.customerCityLabel = new System.Windows.Forms.Label();
@@ -132,12 +132,13 @@ namespace FrenchDesktopScheduler.Forms
 			this.textBox2.Size = new System.Drawing.Size(146, 20);
 			this.textBox2.TabIndex = 30;
 			// 
-			// textBox
+			// custIDTextBox
 			// 
-			this.textBox.Location = new System.Drawing.Point(111, 86);
-			this.textBox.Name = "textBox";
-			this.textBox.Size = new System.Drawing.Size(59, 20);
-			this.textBox.TabIndex = 29;
+			this.custIDTextBox.Location = new System.Drawing.Point(111, 86);
+			this.custIDTextBox.Name = "custIDTextBox";
+			this.custIDTextBox.ReadOnly = true;
+			this.custIDTextBox.Size = new System.Drawing.Size(59, 20);
+			this.custIDTextBox.TabIndex = 29;
 			// 
 			// custAddressTwoLabel
 			// 
@@ -236,7 +237,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.Controls.Add(this.textBox4);
 			this.Controls.Add(this.textBox3);
 			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox);
+			this.Controls.Add(this.custIDTextBox);
 			this.Controls.Add(this.custAddressTwoLabel);
 			this.Controls.Add(this.customerCountryLabel);
 			this.Controls.Add(this.customerCityLabel);
@@ -266,7 +267,7 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.TextBox textBox4;
 		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox;
+		private System.Windows.Forms.TextBox custIDTextBox;
 		private System.Windows.Forms.Label custAddressTwoLabel;
 		private System.Windows.Forms.Label customerCountryLabel;
 		private System.Windows.Forms.Label customerCityLabel;
