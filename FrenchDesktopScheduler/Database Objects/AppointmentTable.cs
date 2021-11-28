@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrenchDesktopScheduler.Database_Objects
 {
-	class Appointment
+	class AppointmentTable
 	{
         public int AppointmentId { get; set; }
         public int CustomerId { get; set; }
@@ -21,7 +21,7 @@ namespace FrenchDesktopScheduler.Database_Objects
 
         private static int count = 0;
 
-        public Appointment(int appointmentId, int customerId, int userId, string type, DateTime start, DateTime end, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
+        public AppointmentTable(int appointmentId, int customerId, int userId, string type, DateTime start, DateTime end, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
             AppointmentId = appointmentId;
             //if (appointmentId > count)

@@ -89,29 +89,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database Objects\Address.cs" />
-    <Compile Include="Database Objects\Appointment.cs" />
-    <Compile Include="Database Objects\City.cs" />
-    <Compile Include="Database Objects\Country.cs" />
+    <Compile Include="Database Objects\AddressTable.cs" />
+    <Compile Include="Database Objects\AppointmentTable.cs" />
+    <Compile Include="Database Objects\CityTable.cs" />
+    <Compile Include="Database Objects\CountryTable.cs" />
     <Compile Include="Database Objects\CustomerTable.cs" />
     <Compile Include="Database Objects\UserTable.cs" />
-    <Compile Include="Forms\AddCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AddCustomer.Designer.cs">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Customer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\EditCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\EditCustomer.Designer.cs">
-      <DependentUpon>EditCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LandingPage.cs">
       <SubType>Form</SubType>
@@ -127,14 +115,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AddCustomer.resx">
-      <DependentUpon>AddCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditCustomer.resx">
-      <DependentUpon>EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LandingPage.resx">
       <DependentUpon>LandingPage.cs</DependentUpon>

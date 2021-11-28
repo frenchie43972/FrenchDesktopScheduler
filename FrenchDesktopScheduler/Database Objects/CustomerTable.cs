@@ -23,7 +23,6 @@ namespace FrenchDesktopScheduler.Database_Objects
             string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
             CustomerId = customerId;
-            count = customerId;
             CustomerName = customerName;
             AddressId = addressId;
             Active = (byte)active;

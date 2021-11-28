@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrenchDesktopScheduler.Database_Objects
 {
-	class City
+	class CityTable
 	{
         public int CityId { get; set; }
         public string CityName { get; set; }
@@ -16,7 +16,7 @@ namespace FrenchDesktopScheduler.Database_Objects
         public DateTime LastUpdate { get; set; }
         public string LastUpdateBy { get; set; }
 
-        public City(int cityId, string cityName, int countryId, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
+        public CityTable(int cityId, string cityName, int countryId, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
             CityId = cityId;
             CityName = cityName;

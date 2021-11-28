@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrenchDesktopScheduler.Database_Objects
 {
-	class Address
+	class AddressTable
 	{
         public int AddressId { get; set; }
         public string AddressLine { get; set; }
@@ -22,7 +22,7 @@ namespace FrenchDesktopScheduler.Database_Objects
         private static int count = 0;
 
 
-        public Address(int addressId, string addressLine, string addressLine2, int cityId, string postalCode, string phone, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
+        public AddressTable(int addressId, string addressLine, string addressLine2, int cityId, string postalCode, string phone, DateTime createDate, string createdBy, DateTime lastUpdate, string lastUpdateBy)
         {
             AddressId = addressId;
             if (addressId > count)
