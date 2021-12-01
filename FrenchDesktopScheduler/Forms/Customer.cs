@@ -29,6 +29,7 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void addCustomerButton_Click(object sender, EventArgs e)
 		{
+			textBoxClear();
 			textBoxEnable();
 		}
 
@@ -58,7 +59,7 @@ namespace FrenchDesktopScheduler.Forms
 		{
 			if (String.IsNullOrWhiteSpace(custIDTextBox.Text) || !Int32.TryParse(custIDTextBox.Text, out _))
 			{
-
+				MessageBox.Show("Test");
 			}
 
 		}
@@ -113,6 +114,18 @@ namespace FrenchDesktopScheduler.Forms
 			custCountryTextBox.Enabled = true;
 			custPostTextBox.Enabled = true;
 			custPhoneTextBox.Enabled = true;
+		}
+
+		private void textBoxClear()
+		{
+			custIDTextBox.Clear();
+			custNameTextBox.Clear();
+			custAddTextBox.Clear();
+			custAdd2TextBox.Clear();
+			custCityTextBox.Clear();
+			custCountryTextBox.Clear();
+			custPostTextBox.Clear();
+			custPhoneTextBox.Clear();
 		}
 
 		
