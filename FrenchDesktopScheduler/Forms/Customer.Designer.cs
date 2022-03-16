@@ -258,6 +258,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.cancelButton.TabIndex = 53;
 			this.cancelButton.Text = "Cancel";
 			this.cancelButton.UseVisualStyleBackColor = true;
+			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click_1);
 			// 
 			// saveButton
 			// 

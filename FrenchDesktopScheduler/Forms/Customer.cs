@@ -55,6 +55,12 @@ namespace FrenchDesktopScheduler.Forms
 			}
 		}
 
+		private void cancelButton_Click_1(object sender, EventArgs e)
+		{
+			textBoxClear();
+			textBoxDisable();
+		}
+
 		private void saveButton_Click(object sender, EventArgs e)
 		{
 			if (String.IsNullOrWhiteSpace(custIDTextBox.Text) || !Int32.TryParse(custIDTextBox.Text, out _))
@@ -62,7 +68,7 @@ namespace FrenchDesktopScheduler.Forms
 				MessageBox.Show("Test");
 			}
 
-		}
+		}		
 
 		// Adds information from the customer table to the DGV upon the for loading
 		private void dgvLoad ()

@@ -36,7 +36,6 @@ namespace FrenchDesktopScheduler
 			this.passwordTextBox = new System.Windows.Forms.TextBox();
 			this.loginButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
-			this.resetLoginFutton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// pleaseLogInLabel
@@ -97,7 +96,7 @@ namespace FrenchDesktopScheduler
 			// 
 			// cancelButton
 			// 
-			this.cancelButton.Location = new System.Drawing.Point(69, 159);
+			this.cancelButton.Location = new System.Drawing.Point(119, 130);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(75, 23);
 			this.cancelButton.TabIndex = 6;
@@ -105,21 +104,11 @@ namespace FrenchDesktopScheduler
 			this.cancelButton.UseVisualStyleBackColor = true;
 			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
 			// 
-			// resetLoginFutton
-			// 
-			this.resetLoginFutton.Location = new System.Drawing.Point(119, 130);
-			this.resetLoginFutton.Name = "resetLoginFutton";
-			this.resetLoginFutton.Size = new System.Drawing.Size(75, 23);
-			this.resetLoginFutton.TabIndex = 7;
-			this.resetLoginFutton.Text = "Reset Form";
-			this.resetLoginFutton.UseVisualStyleBackColor = true;
-			// 
 			// LoginForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(223, 202);
-			this.Controls.Add(this.resetLoginFutton);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.loginButton);
 			this.Controls.Add(this.passwordTextBox);
@@ -144,7 +133,6 @@ namespace FrenchDesktopScheduler
 		private System.Windows.Forms.TextBox passwordTextBox;
 		private System.Windows.Forms.Button loginButton;
 		private System.Windows.Forms.Button cancelButton;
-		private System.Windows.Forms.Button resetLoginFutton;
 	}
 }
 
