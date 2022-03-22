@@ -126,6 +126,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.custPhoneTextBox.Name = "custPhoneTextBox";
 			this.custPhoneTextBox.Size = new System.Drawing.Size(110, 20);
 			this.custPhoneTextBox.TabIndex = 52;
+			this.custPhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custPhoneTextBox_KeyPress);
 			// 
 			// custCountryTextBox
 			// 
@@ -140,6 +141,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.custPostTextBox.Name = "custPostTextBox";
 			this.custPostTextBox.Size = new System.Drawing.Size(110, 20);
 			this.custPostTextBox.TabIndex = 50;
+			this.custPostTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custPostTextBox_KeyPress);
 			// 
 			// custCityTextBox
 			// 

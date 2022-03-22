@@ -134,6 +134,28 @@ namespace FrenchDesktopScheduler.Forms
 			custPhoneTextBox.Clear();
 		}
 
-		
+
+		// Requires the Post Code to be number only. Trying anything else reuslts in an error
+		private void custPostTextBox_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+			{
+				e.Handled = true;
+				MessageBox.Show("Input must be a number only.", "Error",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		// Requires the phone numbwe to be a number and hyphen only. Trying anything else reuslts in an error
+		private void custPhoneTextBox_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+				(e.KeyChar != '-'))
+			{
+				e.Handled = true;
+				MessageBox.Show("Input must be a number and hyphen.", "Error",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 	}
 }
