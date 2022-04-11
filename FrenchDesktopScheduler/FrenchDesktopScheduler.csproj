@@ -95,11 +95,23 @@
     <Compile Include="Database Objects\CountryTable.cs" />
     <Compile Include="Database Objects\CustomerTable.cs" />
     <Compile Include="Database Objects\UserTable.cs" />
-    <Compile Include="Forms\Customer.cs">
+    <Compile Include="Forms\AddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Customer.Designer.cs">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <Compile Include="Forms\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerLanding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerLanding.Designer.cs">
+      <DependentUpon>CustomerLanding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditCustomer.Designer.cs">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LandingPage.cs">
       <SubType>Form</SubType>
@@ -115,8 +127,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Customer.resx">
-      <DependentUpon>Customer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerLanding.resx">
+      <DependentUpon>CustomerLanding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LandingPage.resx">
       <DependentUpon>LandingPage.cs</DependentUpon>

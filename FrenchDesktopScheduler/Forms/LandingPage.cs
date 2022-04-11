@@ -27,7 +27,7 @@ namespace FrenchDesktopScheduler.Forms
 		private void customerButton_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			Customer toCustomer = new Customer();
+			CustomerLanding toCustomer = new CustomerLanding();
 			toCustomer.Show();
 		}
 	}

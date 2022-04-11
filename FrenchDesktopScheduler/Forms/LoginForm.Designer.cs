@@ -80,7 +80,9 @@ namespace FrenchDesktopScheduler
 			// 
 			this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.passwordTextBox.Location = new System.Drawing.Point(88, 87);
+			this.passwordTextBox.MaxLength = 24;
 			this.passwordTextBox.Name = "passwordTextBox";
+			this.passwordTextBox.PasswordChar = '*';
 			this.passwordTextBox.Size = new System.Drawing.Size(106, 21);
 			this.passwordTextBox.TabIndex = 4;
 			// 
