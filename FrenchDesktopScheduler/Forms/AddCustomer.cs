@@ -21,6 +21,9 @@ namespace FrenchDesktopScheduler.Forms
 			InitializeComponent();
 			dgvLoad();
 			textBoxDisable();
+
+			MessageBox.Show("All fields are required. If there is no Address 2, please type 'N/A' into the field.", "ATTENTION!",
+				MessageBoxButtons.OK, MessageBoxIcon.Warning);
 		}
 
 		private void toLandingButton_Click(object sender, EventArgs e)
@@ -44,13 +47,13 @@ namespace FrenchDesktopScheduler.Forms
 			con.Open();
 
 			String sqlString = @"
-								SELECT customer.customerID, customer.customerName,
-								address.address, address.address2, address.postalCode, address.phone,
+								SELECT customer.customerID, customerName,
+								address.address, address2, postalCode, phone,
 								city.city, country.country
-								FROM customer
-								JOIN address ON customer.customerID = address.addressID
-								JOIN city ON address.addressID = city.cityID
-								JOIN country ON city.cityID = country.countryID";
+								FROM country, city, address, customer
+								WHERE customer.addressId = address.addressId 
+								AND address.cityID = city.cityID 
+								AND city.countryId = country.countryId";
 			MySqlCommand cmd = new MySqlCommand(sqlString, con);
 			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
 			DataTable customerDT = new DataTable();
@@ -76,57 +79,60 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void saveButton_Click(object sender, EventArgs e)
 		{
+			// Exception control to ensure all fields are filled out
 			bool isBlank = this.Controls.OfType<TextBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
 			if (isBlank) 
 			{
 				MessageBox.Show("All fields are required to be filled out.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			
-			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
-			MySqlConnection con = new MySqlConnection(constr);
-			con.Open();
+			else
+			{
+				string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+				MySqlConnection con = new MySqlConnection(constr);
+				con.Open();
 
-			/*              This section adds user inputs into the appropriate DB tables                    */
-			String addCountry = @"INSERT INTO country(country, createDate, createdBy, lastUpdateBy) 
+				/*              This section adds user inputs into the appropriate DB tables                    */
+				String addCountry = @"INSERT INTO country(country, createDate, createdBy, lastUpdateBy) 
 								VALUES(@COUNTRY, NOW(), 'test', 'test')";
-			MySqlCommand countryAdd = new MySqlCommand(addCountry, con);
-			countryAdd.Parameters.AddWithValue("@COUNTRY", custCountryTextBox.Text);
-			countryAdd.ExecuteNonQuery();
-			int countryID = (int)countryAdd.LastInsertedId;
+				MySqlCommand countryAdd = new MySqlCommand(addCountry, con);
+				countryAdd.Parameters.AddWithValue("@COUNTRY", custCountryTextBox.Text);
+				countryAdd.ExecuteNonQuery();
+				int countryID = (int)countryAdd.LastInsertedId;
 
-			String addCity = @"INSERT INTO city(city, countryId, createDate, createdBy, lastUpdateBy) 
+				String addCity = @"INSERT INTO city(city, countryId, createDate, createdBy, lastUpdateBy) 
 							 VALUES(@CITY, @COUNTRYID, NOW(), 'test', 'test')";
-			MySqlCommand cityAdd = new MySqlCommand(addCity, con);
-			cityAdd.Parameters.AddWithValue("@CITY", custCityTextBox.Text);
-			cityAdd.Parameters.AddWithValue("@COUNTRYID", countryID);
-			cityAdd.ExecuteNonQuery();
-			int cityID = (int)cityAdd.LastInsertedId;
+				MySqlCommand cityAdd = new MySqlCommand(addCity, con);
+				cityAdd.Parameters.AddWithValue("@CITY", custCityTextBox.Text);
+				cityAdd.Parameters.AddWithValue("@COUNTRYID", countryID);
+				cityAdd.ExecuteNonQuery();
+				int cityID = (int)cityAdd.LastInsertedId;
 
-			String addAddress = @"INSERT INTO address(address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdateBy)
+				String addAddress = @"INSERT INTO address(address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdateBy)
 								VALUES(@ADDRESS, @ADDRESS2, @CITYID, @POSTCODE, @PHONE, NOW(), 'test', 'test')";
-			MySqlCommand addressAdd = new MySqlCommand(addAddress, con);
-			addressAdd.Parameters.AddWithValue("@ADDRESS", custAddTextBox.Text);
-			addressAdd.Parameters.AddWithValue("@ADDRESS2", custAdd2TextBox.Text);
-			addressAdd.Parameters.AddWithValue("@POSTCODE", custPostTextBox.Text);
-			addressAdd.Parameters.AddWithValue("@PHONE", custPhoneTextBox.Text);
-			addressAdd.Parameters.AddWithValue("@CITYID", cityID);
-			addressAdd.ExecuteNonQuery();
-			int addressID = (int)addressAdd.LastInsertedId;
+				MySqlCommand addressAdd = new MySqlCommand(addAddress, con);
+				addressAdd.Parameters.AddWithValue("@ADDRESS", custAddTextBox.Text);
+				addressAdd.Parameters.AddWithValue("@ADDRESS2", custAdd2TextBox.Text);
+				addressAdd.Parameters.AddWithValue("@POSTCODE", custPostTextBox.Text);
+				addressAdd.Parameters.AddWithValue("@PHONE", custPhoneTextBox.Text);
+				addressAdd.Parameters.AddWithValue("@CITYID", cityID);
+				addressAdd.ExecuteNonQuery();
+				int addressID = (int)addressAdd.LastInsertedId;
 
-			String addCustomer = @"INSERT INTO customer(customerName, addressId, active, createDate, createdBy, lastUpdateBy) 
+				String addCustomer = @"INSERT INTO customer(customerName, addressId, active, createDate, createdBy, lastUpdateBy) 
 								 VALUES(@CUSTOMER, @ADDRESS, '1', NOW(), 'test', 'test')";
-			MySqlCommand customerAdd = new MySqlCommand(addCustomer, con);
-			customerAdd.Parameters.AddWithValue("@CUSTOMER", custNameTextBox.Text);
-			customerAdd.Parameters.AddWithValue("@ADDRESS", addressID);
-			customerAdd.ExecuteNonQuery();
-			int customerID = (int)customerAdd.LastInsertedId;
+				MySqlCommand customerAdd = new MySqlCommand(addCustomer, con);
+				customerAdd.Parameters.AddWithValue("@CUSTOMER", custNameTextBox.Text);
+				customerAdd.Parameters.AddWithValue("@ADDRESS", addressID);
+				customerAdd.ExecuteNonQuery();
+				int customerID = (int)customerAdd.LastInsertedId;
 
-			con.Close();
-			textBoxClear();
-			textBoxDisable();
-			/* -----------------------------------------------END SECTION----------------------------------------------- */
-
+				con.Close();
+				textBoxClear();
+				textBoxDisable();
+				dgvLoad();
+				/* -----------------------------------------------END SECTION----------------------------------------------- */
+			}
 		}
 
 		private void textBoxDisable()
@@ -164,6 +170,7 @@ namespace FrenchDesktopScheduler.Forms
 			custPhoneTextBox.Clear();
 		}
 
+		// Requires the Post Code to be number only. Trying anything else reuslts in an error
 		private void custPostTextBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -174,6 +181,7 @@ namespace FrenchDesktopScheduler.Forms
 			}
 		}
 
+		// Requires the phone number to be a number and hyphen only. Trying anything else reuslts in an error
 		private void custPhoneTextBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&

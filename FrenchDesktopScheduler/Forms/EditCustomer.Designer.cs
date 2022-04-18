@@ -63,6 +63,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.saveEditButton.TabIndex = 76;
 			this.saveEditButton.Text = "Save";
 			this.saveEditButton.UseVisualStyleBackColor = true;
+			this.saveEditButton.Click += new System.EventHandler(this.saveEditButton_Click);
 			// 
 			// cancelButton
 			// 
@@ -73,6 +74,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.cancelButton.TabIndex = 75;
 			this.cancelButton.Text = "Cancel";
 			this.cancelButton.UseVisualStyleBackColor = true;
+			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
 			// 
 			// custEditPhoneTextBox
 			// 
@@ -80,6 +82,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.custEditPhoneTextBox.Name = "custEditPhoneTextBox";
 			this.custEditPhoneTextBox.Size = new System.Drawing.Size(110, 20);
 			this.custEditPhoneTextBox.TabIndex = 74;
+			this.custEditPhoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custEditPhoneTextBox_KeyPress);
 			// 
 			// custEditCountryTextBox
 			// 
@@ -94,6 +97,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.custEditPostTextBox.Name = "custEditPostTextBox";
 			this.custEditPostTextBox.Size = new System.Drawing.Size(110, 20);
 			this.custEditPostTextBox.TabIndex = 72;
+			this.custEditPostTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custEditPostTextBox_KeyPress);
 			// 
 			// custEditCityTextBox
 			// 
@@ -212,6 +216,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.toLandingButton.TabIndex = 58;
 			this.toLandingButton.Text = "Back to Landing Page";
 			this.toLandingButton.UseVisualStyleBackColor = true;
+			this.toLandingButton.Click += new System.EventHandler(this.toLandingButton_Click);
 			// 
 			// editCustomerButton
 			// 
@@ -222,6 +227,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.editCustomerButton.TabIndex = 57;
 			this.editCustomerButton.Text = "Edit";
 			this.editCustomerButton.UseVisualStyleBackColor = true;
+			this.editCustomerButton.Click += new System.EventHandler(this.editCustomerButton_Click);
 			// 
 			// customerEditDataGridView
 			// 
@@ -232,6 +238,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.customerEditDataGridView.ReadOnly = true;
 			this.customerEditDataGridView.Size = new System.Drawing.Size(524, 184);
 			this.customerEditDataGridView.TabIndex = 56;
+			this.customerEditDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
 			// 
 			// customerPageLabel
 			// 

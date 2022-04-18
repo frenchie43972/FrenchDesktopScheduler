@@ -37,5 +37,12 @@ namespace FrenchDesktopScheduler.Forms
 			EditCustomer toCustomer = new EditCustomer();
 			toCustomer.Show();
 		}
+
+		private void btnDeleteCustomer_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			DeleteCustomer toCustomer = new DeleteCustomer();
+			toCustomer.Show();
+		}
 	}
 }

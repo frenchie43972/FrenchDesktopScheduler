@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -27,9 +28,20 @@ namespace FrenchDesktopScheduler.Forms
 			landingPage.Show();
 		}
 
-		private void editCustomerButton_Click(object sender, EventArgs e)
+		private void cancelButton_Click(object sender, EventArgs e)
+		{
+			textBoxClear();
+			textBoxDisable();
+		}
+
+		private void saveEditButton_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		// Populates the text boxes with the information from the DGV for editing
+		private void editCustomerButton_Click(object sender, EventArgs e)
+		{
 			if (customerEditDataGridView.SelectedRows.Count > 0)
 			{
 				textBoxEnable();
@@ -49,34 +61,21 @@ namespace FrenchDesktopScheduler.Forms
 			}
 		}
 
-		private void cancelButton_Click_1(object sender, EventArgs e)
-		{
-			textBoxClear();
-			textBoxDisable();
-		}
-
-		private void saveButton_Click(object sender, EventArgs e)
-		{
-			if (String.IsNullOrWhiteSpace(custEditIDTextBox.Text) || !Int32.TryParse(custEditIDTextBox.Text, out _))
-			{
-				MessageBox.Show("Test");
-			}
-
-		}
-
-		// Adds information from the customer table to the DGV upon the for loading
+		// Adds information from the database to the DGV upon loading
 		private void dgvLoad()
 		{
-			MySqlConnection con = new MySqlConnection("server=127.0.0.1;userid=sqlUser;password=Passw0rd!;database=client_schedule");
+			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+			MySqlConnection con = new MySqlConnection(constr);
 			con.Open();
+
 			String sqlString = @"
-								SELECT customer.customerID, customer.customerName,
-								address.address, address.address2, address.postalCode, address.phone,
+								SELECT customer.customerID, customerName,
+								address.address, address2, postalCode, phone,
 								city.city, country.country
-								FROM customer
-								JOIN address ON customer.customerID = address.addressID
-								JOIN city ON address.addressID = city.cityID
-								JOIN country ON city.cityID = country.countryID";
+								FROM country, city, address, customer
+								WHERE customer.addressId = address.addressId 
+								AND address.cityID = city.cityID 
+								AND city.countryId = country.countryId";
 			MySqlCommand cmd = new MySqlCommand(sqlString, con);
 			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
 			DataTable customerDT = new DataTable();
@@ -87,7 +86,6 @@ namespace FrenchDesktopScheduler.Forms
 			customerEditDataGridView.AllowUserToAddRows = false;
 
 			con.Close();
-
 		}
 
 		// Clears the selection bar upon loading and until user selects a row
@@ -130,14 +128,13 @@ namespace FrenchDesktopScheduler.Forms
 			custEditPhoneTextBox.Clear();
 		}
 
-
 		// Requires the Post Code to be number only. Trying anything else reuslts in an error
 		private void custEditPostTextBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
 			{
 				e.Handled = true;
-				MessageBox.Show("Input must be and/or number only.", "Error!",
+				MessageBox.Show("Input must be a number only.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
@@ -153,5 +150,6 @@ namespace FrenchDesktopScheduler.Forms
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
 	}
 }

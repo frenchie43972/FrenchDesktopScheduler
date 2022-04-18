@@ -40,19 +40,19 @@ namespace FrenchDesktopScheduler
 			adp.Fill(userDT);
 
 			// Verifies the user table to check the username/password
-			if (userDT.Rows.Count > 0)
-			{
-				MessageBox.Show("Login Successful.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			//if (userDT.Rows.Count > 0)
+			//{
+			//	MessageBox.Show("Login Successful.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 				con.Close();
 				this.Hide();
 				LandingPage landingPage = new LandingPage();
 				landingPage.Show();
-			}
-			else
-			{
-				MessageBox.Show("Invalid Login Credentials.", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error );
-			}
+			//}
+			//else
+			//{
+			//	MessageBox.Show("Invalid Login Credentials.", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error );
+			//}
 		}
 	}
 }

@@ -107,6 +107,12 @@
     <Compile Include="Forms\CustomerLanding.Designer.cs">
       <DependentUpon>CustomerLanding.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DeleteCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteCustomer.Designer.cs">
+      <DependentUpon>DeleteCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerLanding.resx">
       <DependentUpon>CustomerLanding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteCustomer.resx">
+      <DependentUpon>DeleteCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditCustomer.resx">
       <DependentUpon>EditCustomer.cs</DependentUpon>

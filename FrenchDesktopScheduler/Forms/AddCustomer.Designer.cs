@@ -227,6 +227,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.customerAddDataGridView.ReadOnly = true;
 			this.customerAddDataGridView.Size = new System.Drawing.Size(524, 184);
 			this.customerAddDataGridView.TabIndex = 57;
+			this.customerAddDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
 			// 
 			// addCustomerButton
 			// 
