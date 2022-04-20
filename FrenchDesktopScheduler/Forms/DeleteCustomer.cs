@@ -42,26 +42,32 @@ namespace FrenchDesktopScheduler.Forms
 					String deleteCountry = @"DELETE FROM country 
 											   WHERE countryId = @COUNTRYID";
 					MySqlCommand countryDelete = new MySqlCommand(deleteCountry, con);
-					countryDelete.Parameters.AddWithValue("@COUNTRYID", customerId);
+					countryDelete.Parameters.AddWithValue("@COUNTRYID", customerDeleteDataGridView.CurrentCell.RowIndex);
 					countryDelete.ExecuteNonQuery();
-
-					String deleteCity = @"DELETE FROM city 
-											   WHERE cityId = @CITYID";
-					MySqlCommand cityDelete = new MySqlCommand(deleteCity, con);
-					cityDelete.Parameters.AddWithValue("@CITYID", customerDeleteDataGridView.SelectedRows);
-					cityDelete.ExecuteNonQuery();
 
 					String deleteAddress = @"DELETE FROM address 
 											   WHERE addressId = @ADDRESSID";
 					MySqlCommand addressDelete = new MySqlCommand(deleteAddress, con);
-					addressDelete.Parameters.AddWithValue("@ADDRESSID", customerDeleteDataGridView.SelectedRows);
+					addressDelete.Parameters.AddWithValue("@ADDRESSID", customerDeleteDataGridView.CurrentCell.RowIndex);
 					addressDelete.ExecuteNonQuery();
 
 					String deleteCustomer = @"DELETE FROM customer 
-											   WHERE cusomterId = @CUSTOMERID";
+											   WHERE customerId = @CUSTOMERID";
 					MySqlCommand customerDelete = new MySqlCommand(deleteCustomer, con);
-					customerDelete.Parameters.AddWithValue("@CUSTOMERID", customerDeleteDataGridView.SelectedRows);
+					customerDelete.Parameters.AddWithValue("@CUSTOMERID", customerDeleteDataGridView.CurrentCell.RowIndex);
 					customerDelete.ExecuteNonQuery();					
+
+					String deleteCity = @"DELETE FROM city 
+											   WHERE cityId = @CITYID";
+					MySqlCommand cityDelete = new MySqlCommand(deleteCity, con);
+					cityDelete.Parameters.AddWithValue("@CITYID", customerDeleteDataGridView.CurrentCell.RowIndex);
+					cityDelete.ExecuteNonQuery();
+
+					
+
+					
+
+					
 
 					con.Close();
 					dgvLoad();
