@@ -44,6 +44,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.customerDeleteDataGridView.ReadOnly = true;
 			this.customerDeleteDataGridView.Size = new System.Drawing.Size(776, 260);
 			this.customerDeleteDataGridView.TabIndex = 57;
+			this.customerDeleteDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customerDeleteDataGridView_CellClick);
 			this.customerDeleteDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
 			// 
 			// toLandingButton

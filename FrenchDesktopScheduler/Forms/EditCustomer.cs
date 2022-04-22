@@ -36,6 +36,30 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void saveEditButton_Click(object sender, EventArgs e)
 		{
+			// Exception control to ensure all fields are filled out
+			bool isBlank = this.Controls.OfType<TextBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
+			if (isBlank)
+			{
+				MessageBox.Show("All fields are required to be filled out.", "Error!",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			else
+			{
+				string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+				MySqlConnection con = new MySqlConnection(constr);
+				con.Open();
+
+				String updateCountry = @"UPDATE country SET country = @COUNTRY WHERE countryId = @COUNTRYID";
+				MySqlCommand countryUpdate = new MySqlCommand(updateCountry, con);
+				countryUpdate.Parameters.AddWithValue("@COUNTRY", custEditCountryTextBox.Text);
+				countryUpdate.Parameters.AddWithValue("@COUNTRYID", custEditIDTextBox.Text);
+				countryUpdate.ExecuteNonQuery();
+
+				con.Close();
+				textBoxClear();
+				textBoxDisable();
+				dgvLoad();
+			}
 
 		}
 
