@@ -15,6 +15,7 @@ namespace FrenchDesktopScheduler.Forms
 	public partial class DeleteCustomer : Form
 	{
 		private int selectCustomerID;
+		 
 		public DeleteCustomer()
 		{
 			InitializeComponent();
@@ -49,20 +50,20 @@ namespace FrenchDesktopScheduler.Forms
 					String deleteAddress = @"DELETE FROM address 
 											   WHERE addressId = @ADDRESSID";
 					MySqlCommand addressDelete = new MySqlCommand(deleteAddress, con);
-					addressDelete.Parameters.AddWithValue("@ADDRESSID", customerDeleteDataGridView.CurrentCell.RowIndex);
+					addressDelete.Parameters.AddWithValue("@ADDRESSID", customerDeleteDataGridView.SelectedRows.Count);
 					addressDelete.ExecuteNonQuery();
 
 					String deleteCountry = @"DELETE FROM country 
 											   WHERE countryId = @COUNTRYID";
 					MySqlCommand countryDelete = new MySqlCommand(deleteCountry, con);
-					countryDelete.Parameters.AddWithValue("@COUNTRYID", customerDeleteDataGridView.CurrentCell.RowIndex);
+					countryDelete.Parameters.AddWithValue("@COUNTRYID", customerDeleteDataGridView.SelectedRows.Count);
 					countryDelete.ExecuteNonQuery();
 
 					String deleteCity = @"DELETE FROM city 
 											   WHERE cityId = @CITYID";
 					MySqlCommand cityDelete = new MySqlCommand(deleteCity, con);
-					cityDelete.Parameters.AddWithValue("@CITYID", selectCustomerID);
-					cityDelete.ExecuteNonQuery();					
+					cityDelete.Parameters.AddWithValue("@CITYID", customerDeleteDataGridView.SelectedRows.Count);
+					cityDelete.ExecuteNonQuery();
 
 					con.Close();
 					dgvLoad();
@@ -120,6 +121,7 @@ namespace FrenchDesktopScheduler.Forms
 			{
 				selectCustomerID = (int)customerDeleteDataGridView.Rows[e.RowIndex].Cells[0].Value;
 			}
+			
 		}
 	}
 }
