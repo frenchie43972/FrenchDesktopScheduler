@@ -80,108 +80,66 @@ namespace FrenchDesktopScheduler.Forms
 		private void saveButton_Click(object sender, EventArgs e)
 		{
 			// Exception control to ensure all fields are filled out
-			//bool isBlank = this.Controls.OfType<TextBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
-			//if (isBlank) 
-			//{
-			//	MessageBox.Show("All fields are required to be filled out.", "Error!",
-			//	MessageBoxButtons.OK, MessageBoxIcon.Error);
-			//}
-			//else
-			//{
-			//	string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
-			//	MySqlConnection con = new MySqlConnection(constr);
-			//	con.Open();
+			bool isBlank = this.Controls.OfType<TextBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
+			if (isBlank)
+			{
+				MessageBox.Show("All fields are required to be filled out.", "Error!",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			else
+			{
+				string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+				MySqlConnection con = new MySqlConnection(constr);
+				con.Open();
 
-			//	/*              This section adds user inputs into the appropriate DB tables                    */
-			//	String addCountry = @"INSERT INTO country(country, createDate, createdBy, lastUpdateBy) 
-			//					VALUES(@COUNTRY, NOW(), 'test', 'test')";
-			//	MySqlCommand countryAdd = new MySqlCommand(addCountry, con);
-			//	countryAdd.Parameters.AddWithValue("@COUNTRY", custCountryTextBox.Text);
-			//	countryAdd.ExecuteNonQuery();
-			//	int countryID = (int)countryAdd.LastInsertedId;
-
-			//	String addCity = @"INSERT INTO city(city, countryId, createDate, createdBy, lastUpdateBy) 
-			//				 VALUES(@CITY, @COUNTRYID, NOW(), 'test', 'test')";
-			//	MySqlCommand cityAdd = new MySqlCommand(addCity, con);
-			//	cityAdd.Parameters.AddWithValue("@CITY", custCityTextBox.Text);
-			//	cityAdd.Parameters.AddWithValue("@COUNTRYID", countryID);
-			//	cityAdd.ExecuteNonQuery();
-			//	int cityID = (int)cityAdd.LastInsertedId;
-
-			//	String addAddress = @"INSERT INTO address(address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdateBy)
-			//					VALUES(@ADDRESS, @ADDRESS2, @CITYID, @POSTCODE, @PHONE, NOW(), 'test', 'test')";
-			//	MySqlCommand addressAdd = new MySqlCommand(addAddress, con);
-			//	addressAdd.Parameters.AddWithValue("@ADDRESS", custAddTextBox.Text);
-			//	addressAdd.Parameters.AddWithValue("@ADDRESS2", custAdd2TextBox.Text);
-			//	addressAdd.Parameters.AddWithValue("@POSTCODE", custPostTextBox.Text);
-			//	addressAdd.Parameters.AddWithValue("@PHONE", custPhoneTextBox.Text);
-			//	addressAdd.Parameters.AddWithValue("@CITYID", cityID);
-			//	addressAdd.ExecuteNonQuery();
-			//	int addressID = (int)addressAdd.LastInsertedId;
-
-			//	String addCustomer = @"INSERT INTO customer(customerName, addressId, active, createDate, createdBy, lastUpdateBy) 
-			//					 VALUES(@CUSTOMER, @ADDRESS, '1', NOW(), 'test', 'test')";
-			//	MySqlCommand customerAdd = new MySqlCommand(addCustomer, con);
-			//	customerAdd.Parameters.AddWithValue("@CUSTOMER", custNameTextBox.Text);
-			//	customerAdd.Parameters.AddWithValue("@ADDRESS", addressID);
-			//	customerAdd.ExecuteNonQuery();
-			//	int customerID = (int)customerAdd.LastInsertedId;
-
-			//	con.Close();
-			//	textBoxClear();
-			//	textBoxDisable();
-			//	dgvLoad();
-			//	/* -----------------------------------------------END SECTION----------------------------------------------- */
-			//}
-
-			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
-			MySqlConnection con = new MySqlConnection(constr);
-			con.Open();
-
-			/*              This section adds user inputs into the appropriate DB tables                    */
-			String addCountry = @"INSERT INTO country(country, createDate, createdBy, lastUpdateBy) 
+				/*              This section adds user inputs into the appropriate DB tables                    */
+				String addCountry = @"INSERT INTO country(country, createDate, createdBy, lastUpdateBy) 
 								VALUES(@COUNTRY, NOW(), 'test', 'test')";
-			MySqlCommand countryAdd = new MySqlCommand(addCountry, con);
-			countryAdd.Parameters.AddWithValue("@COUNTRY", custCountryTextBox.Text);
-			countryAdd.ExecuteNonQuery();
-			int countryID = (int)countryAdd.LastInsertedId;
+				MySqlCommand countryAdd = new MySqlCommand(addCountry, con);
+				countryAdd.Parameters.AddWithValue("@COUNTRY", custCountryTextBox.Text);
+				countryAdd.ExecuteNonQuery();
+				int countryID = (int)countryAdd.LastInsertedId;
 
-			String addCity = @"INSERT INTO city(city, countryId, createDate, createdBy, lastUpdateBy) 
+				String addCity = @"INSERT INTO city(city, countryId, createDate, createdBy, lastUpdateBy) 
 							 VALUES(@CITY, @COUNTRYID, NOW(), 'test', 'test')";
-			MySqlCommand cityAdd = new MySqlCommand(addCity, con);
-			cityAdd.Parameters.AddWithValue("@CITY", custCityTextBox.Text);
-			cityAdd.Parameters.AddWithValue("@COUNTRYID", countryID);
-			cityAdd.ExecuteNonQuery();
-			int cityID = (int)cityAdd.LastInsertedId;
+				MySqlCommand cityAdd = new MySqlCommand(addCity, con);
+				cityAdd.Parameters.AddWithValue("@CITY", custCityTextBox.Text);
+				cityAdd.Parameters.AddWithValue("@COUNTRYID", countryID);
+				cityAdd.ExecuteNonQuery();
+				int cityID = (int)cityAdd.LastInsertedId;
 
-			String addAddress = @"INSERT INTO address(address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdateBy)
+				String addAddress = @"INSERT INTO address(address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdateBy)
 								VALUES(@ADDRESS, @ADDRESS2, @CITYID, @POSTCODE, @PHONE, NOW(), 'test', 'test')";
-			MySqlCommand addressAdd = new MySqlCommand(addAddress, con);
-			addressAdd.Parameters.AddWithValue("@ADDRESS", custAddTextBox.Text);
-			addressAdd.Parameters.AddWithValue("@ADDRESS2", custAdd2TextBox.Text);
-			addressAdd.Parameters.AddWithValue("@POSTCODE", custPostTextBox.Text);
-			addressAdd.Parameters.AddWithValue("@PHONE", custPhoneTextBox.Text);
-			addressAdd.Parameters.AddWithValue("@CITYID", cityID);
-			addressAdd.ExecuteNonQuery();
-			int addressID = (int)addressAdd.LastInsertedId;
+				MySqlCommand addressAdd = new MySqlCommand(addAddress, con);
+				addressAdd.Parameters.AddWithValue("@ADDRESS", custAddTextBox.Text);
+				addressAdd.Parameters.AddWithValue("@ADDRESS2", custAdd2TextBox.Text);
+				addressAdd.Parameters.AddWithValue("@POSTCODE", custPostTextBox.Text);
+				addressAdd.Parameters.AddWithValue("@PHONE", custPhoneTextBox.Text);
+				addressAdd.Parameters.AddWithValue("@CITYID", cityID);
+				addressAdd.ExecuteNonQuery();
+				int addressID = (int)addressAdd.LastInsertedId;
 
-			String addCustomer = @"INSERT INTO customer(customerName, addressId, active, createDate, createdBy, lastUpdateBy) 
+				String addCustomer = @"INSERT INTO customer(customerName, addressId, active, createDate, createdBy, lastUpdateBy) 
 								 VALUES(@CUSTOMER, @ADDRESS, '1', NOW(), 'test', 'test')";
-			MySqlCommand customerAdd = new MySqlCommand(addCustomer, con);
-			customerAdd.Parameters.AddWithValue("@CUSTOMER", custNameTextBox.Text);
-			customerAdd.Parameters.AddWithValue("@ADDRESS", addressID);
-			customerAdd.ExecuteNonQuery();
-			int customerID = (int)customerAdd.LastInsertedId;
+				MySqlCommand customerAdd = new MySqlCommand(addCustomer, con);
+				customerAdd.Parameters.AddWithValue("@CUSTOMER", custNameTextBox.Text);
+				customerAdd.Parameters.AddWithValue("@ADDRESS", addressID);
+				customerAdd.ExecuteNonQuery();
+				int customerID = (int)customerAdd.LastInsertedId;
 
-			con.Close();
-			textBoxClear();
-			textBoxDisable();
-			dgvLoad();
+				con.Close();
+				textBoxClear();
+				textBoxDisable();
+				dgvLoad();
+				/* -----------------------------------------------END SECTION----------------------------------------------- */
+			}
+
+
 		}
 
 		private void textBoxDisable()
 		{
-			custIDTextBox.Enabled = false;
+			//custIDTextBox.Enabled = false;
 			custNameTextBox.Enabled = false;
 			custAddTextBox.Enabled = false;
 			custAdd2TextBox.Enabled = false;
@@ -204,7 +162,7 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void textBoxClear()
 		{
-			custIDTextBox.Clear();
+			//custIDTextBox.Clear();
 			custNameTextBox.Clear();
 			custAddTextBox.Clear();
 			custAdd2TextBox.Clear();

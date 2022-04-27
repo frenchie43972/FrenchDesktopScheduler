@@ -38,7 +38,6 @@ namespace FrenchDesktopScheduler.Forms
 			this.custAdd2TextBox = new System.Windows.Forms.TextBox();
 			this.custAddTextBox = new System.Windows.Forms.TextBox();
 			this.custNameTextBox = new System.Windows.Forms.TextBox();
-			this.custIDTextBox = new System.Windows.Forms.TextBox();
 			this.custAddressTwoLabel = new System.Windows.Forms.Label();
 			this.customerCountryLabel = new System.Windows.Forms.Label();
 			this.customerCityLabel = new System.Windows.Forms.Label();
@@ -46,7 +45,6 @@ namespace FrenchDesktopScheduler.Forms
 			this.customerPhoneLabel = new System.Windows.Forms.Label();
 			this.customerAddressLabel = new System.Windows.Forms.Label();
 			this.customerNameLabel = new System.Windows.Forms.Label();
-			this.customerIDLabel = new System.Windows.Forms.Label();
 			this.toLandingButton = new System.Windows.Forms.Button();
 			this.customerAddDataGridView = new System.Windows.Forms.DataGridView();
 			this.addCustomerButton = new System.Windows.Forms.Button();
@@ -122,18 +120,10 @@ namespace FrenchDesktopScheduler.Forms
 			// 
 			// custNameTextBox
 			// 
-			this.custNameTextBox.Location = new System.Drawing.Point(325, 240);
+			this.custNameTextBox.Location = new System.Drawing.Point(122, 240);
 			this.custNameTextBox.Name = "custNameTextBox";
-			this.custNameTextBox.Size = new System.Drawing.Size(146, 20);
+			this.custNameTextBox.Size = new System.Drawing.Size(194, 20);
 			this.custNameTextBox.TabIndex = 68;
-			// 
-			// custIDTextBox
-			// 
-			this.custIDTextBox.Location = new System.Drawing.Point(122, 240);
-			this.custIDTextBox.Name = "custIDTextBox";
-			this.custIDTextBox.ReadOnly = true;
-			this.custIDTextBox.Size = new System.Drawing.Size(59, 20);
-			this.custIDTextBox.TabIndex = 67;
 			// 
 			// custAddressTwoLabel
 			// 
@@ -192,20 +182,11 @@ namespace FrenchDesktopScheduler.Forms
 			// customerNameLabel
 			// 
 			this.customerNameLabel.AutoSize = true;
-			this.customerNameLabel.Location = new System.Drawing.Point(228, 243);
+			this.customerNameLabel.Location = new System.Drawing.Point(33, 247);
 			this.customerNameLabel.Name = "customerNameLabel";
 			this.customerNameLabel.Size = new System.Drawing.Size(82, 13);
 			this.customerNameLabel.TabIndex = 60;
 			this.customerNameLabel.Text = "Customer Name";
-			// 
-			// customerIDLabel
-			// 
-			this.customerIDLabel.AutoSize = true;
-			this.customerIDLabel.Location = new System.Drawing.Point(33, 243);
-			this.customerIDLabel.Name = "customerIDLabel";
-			this.customerIDLabel.Size = new System.Drawing.Size(65, 13);
-			this.customerIDLabel.TabIndex = 59;
-			this.customerIDLabel.Text = "Customer ID";
 			// 
 			// toLandingButton
 			// 
@@ -264,7 +245,6 @@ namespace FrenchDesktopScheduler.Forms
 			this.Controls.Add(this.custAdd2TextBox);
 			this.Controls.Add(this.custAddTextBox);
 			this.Controls.Add(this.custNameTextBox);
-			this.Controls.Add(this.custIDTextBox);
 			this.Controls.Add(this.custAddressTwoLabel);
 			this.Controls.Add(this.customerCountryLabel);
 			this.Controls.Add(this.customerCityLabel);
@@ -272,7 +252,6 @@ namespace FrenchDesktopScheduler.Forms
 			this.Controls.Add(this.customerPhoneLabel);
 			this.Controls.Add(this.customerAddressLabel);
 			this.Controls.Add(this.customerNameLabel);
-			this.Controls.Add(this.customerIDLabel);
 			this.Controls.Add(this.toLandingButton);
 			this.Controls.Add(this.customerAddDataGridView);
 			this.Controls.Add(this.addCustomerButton);
@@ -297,7 +276,6 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.TextBox custAdd2TextBox;
 		private System.Windows.Forms.TextBox custAddTextBox;
 		private System.Windows.Forms.TextBox custNameTextBox;
-		private System.Windows.Forms.TextBox custIDTextBox;
 		private System.Windows.Forms.Label custAddressTwoLabel;
 		private System.Windows.Forms.Label customerCountryLabel;
 		private System.Windows.Forms.Label customerCityLabel;
@@ -305,7 +283,6 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Label customerPhoneLabel;
 		private System.Windows.Forms.Label customerAddressLabel;
 		private System.Windows.Forms.Label customerNameLabel;
-		private System.Windows.Forms.Label customerIDLabel;
 		private System.Windows.Forms.Button toLandingButton;
 		private System.Windows.Forms.DataGridView customerAddDataGridView;
 		private System.Windows.Forms.Button addCustomerButton;

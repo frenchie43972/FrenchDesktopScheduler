@@ -15,7 +15,10 @@ namespace FrenchDesktopScheduler.Forms
 	public partial class DeleteCustomer : Form
 	{
 		private int selectCustomerID;
-		 
+		private string selectAddressID;
+		private string selectCityID;
+		private string selectCountryID;
+
 		public DeleteCustomer()
 		{
 			InitializeComponent();
@@ -48,22 +51,22 @@ namespace FrenchDesktopScheduler.Forms
 					customerDelete.ExecuteNonQuery();
 
 					String deleteAddress = @"DELETE FROM address 
-											   WHERE addressId = @ADDRESSID";
+											   WHERE address = @ADDRESSID";
 					MySqlCommand addressDelete = new MySqlCommand(deleteAddress, con);
-					addressDelete.Parameters.AddWithValue("@ADDRESSID", customerDeleteDataGridView.SelectedRows.Count);
+					addressDelete.Parameters.AddWithValue("@ADDRESSID", selectAddressID);
 					addressDelete.ExecuteNonQuery();
 
-					String deleteCountry = @"DELETE FROM country 
-											   WHERE countryId = @COUNTRYID";
-					MySqlCommand countryDelete = new MySqlCommand(deleteCountry, con);
-					countryDelete.Parameters.AddWithValue("@COUNTRYID", customerDeleteDataGridView.SelectedRows.Count);
-					countryDelete.ExecuteNonQuery();
-
 					String deleteCity = @"DELETE FROM city 
-											   WHERE cityId = @CITYID";
+											   WHERE city = @CITYID";
 					MySqlCommand cityDelete = new MySqlCommand(deleteCity, con);
-					cityDelete.Parameters.AddWithValue("@CITYID", customerDeleteDataGridView.SelectedRows.Count);
+					cityDelete.Parameters.AddWithValue("@CITYID", selectCityID);
 					cityDelete.ExecuteNonQuery();
+
+					String deleteCountry = @"DELETE FROM country 
+											   WHERE country = @COUNTRYID";
+					MySqlCommand countryDelete = new MySqlCommand(deleteCountry, con);
+					countryDelete.Parameters.AddWithValue("@COUNTRYID", selectCountryID);
+					countryDelete.ExecuteNonQuery();
 
 					con.Close();
 					dgvLoad();
@@ -120,8 +123,11 @@ namespace FrenchDesktopScheduler.Forms
 			if (e.RowIndex >= 0)
 			{
 				selectCustomerID = (int)customerDeleteDataGridView.Rows[e.RowIndex].Cells[0].Value;
+				selectAddressID = (string)customerDeleteDataGridView.Rows[e.RowIndex].Cells[2].Value;
+				selectCityID = (string)customerDeleteDataGridView.Rows[e.RowIndex].Cells[6].Value;  
+				selectCountryID = (string)customerDeleteDataGridView.Rows[e.RowIndex].Cells[7].Value;
 			}
-			
+
 		}
 	}
 }

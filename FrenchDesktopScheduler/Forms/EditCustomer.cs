@@ -55,6 +55,24 @@ namespace FrenchDesktopScheduler.Forms
 				countryUpdate.Parameters.AddWithValue("@COUNTRYID", custEditIDTextBox.Text);
 				countryUpdate.ExecuteNonQuery();
 
+				String updateCity = @"UPDATE city SET city = @CITY WHERE cityId = @CITYID";
+				MySqlCommand cityUpdate = new MySqlCommand(updateCity, con);
+				cityUpdate.Parameters.AddWithValue("@CITY", custEditCityTextBox.Text);
+				cityUpdate.Parameters.AddWithValue("@CITYID", custEditIDTextBox.Text);
+				cityUpdate.ExecuteNonQuery();
+
+				String updateAddress = @"UPDATE address SET address = @ADDRESS WHERE addressId = @ADDRESSID";
+				MySqlCommand addressUpdate = new MySqlCommand(updateAddress, con);
+				addressUpdate.Parameters.AddWithValue("@ADDRESS", custEditAddTextBox.Text);
+				addressUpdate.Parameters.AddWithValue("@ADDRESSID", custEditIDTextBox.Text);
+				addressUpdate.ExecuteNonQuery();
+
+				String updateCustomer = @"UPDATE customer SET customerName = @CUSTOMER WHERE customerId = @CUSTOMERID";
+				MySqlCommand customerUpdate = new MySqlCommand(updateCustomer, con);
+				customerUpdate.Parameters.AddWithValue("@CUSTOMER", custEditNameTextBox.Text);
+				customerUpdate.Parameters.AddWithValue("@CUSTOMERID", custEditIDTextBox.Text);
+				customerUpdate.ExecuteNonQuery();
+
 				con.Close();
 				textBoxClear();
 				textBoxDisable();
