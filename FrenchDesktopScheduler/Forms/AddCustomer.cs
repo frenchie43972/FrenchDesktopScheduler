@@ -139,7 +139,6 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void textBoxDisable()
 		{
-			//custIDTextBox.Enabled = false;
 			custNameTextBox.Enabled = false;
 			custAddTextBox.Enabled = false;
 			custAdd2TextBox.Enabled = false;
@@ -162,7 +161,6 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void textBoxClear()
 		{
-			//custIDTextBox.Clear();
 			custNameTextBox.Clear();
 			custAddTextBox.Clear();
 			custAdd2TextBox.Clear();
@@ -181,6 +179,7 @@ namespace FrenchDesktopScheduler.Forms
 				MessageBox.Show("Input must be a number only.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+			
 		}
 
 		// Requires the phone number to be a number and hyphen only. Trying anything else reuslts in an error
