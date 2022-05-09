@@ -14,6 +14,11 @@ namespace FrenchDesktopScheduler.Forms
 {
 	public partial class EditCustomer : Form
 	{
+		private int selectCustomerID;
+		private string selectAddressID;
+		private string selectCityID;
+		private string selectCountryID;
+
 		public EditCustomer()
 		{
 			InitializeComponent();
@@ -49,17 +54,11 @@ namespace FrenchDesktopScheduler.Forms
 				MySqlConnection con = new MySqlConnection(constr);
 				con.Open();
 
-				String updateCountry = @"UPDATE country SET country = @COUNTRY WHERE countryId = @COUNTRYID";
-				MySqlCommand countryUpdate = new MySqlCommand(updateCountry, con);
-				countryUpdate.Parameters.AddWithValue("@COUNTRY", custEditCountryTextBox.Text);
-				countryUpdate.Parameters.AddWithValue("@COUNTRYID", custEditIDTextBox.Text);
-				countryUpdate.ExecuteNonQuery();
-
-				String updateCity = @"UPDATE city SET city = @CITY WHERE cityId = @CITYID";
-				MySqlCommand cityUpdate = new MySqlCommand(updateCity, con);
-				cityUpdate.Parameters.AddWithValue("@CITY", custEditCityTextBox.Text);
-				cityUpdate.Parameters.AddWithValue("@CITYID", custEditIDTextBox.Text);
-				cityUpdate.ExecuteNonQuery();
+				String updateCustomer = @"UPDATE customer SET customerName = @CUSTOMER WHERE customerId = @CUSTOMERID";
+				MySqlCommand customerUpdate = new MySqlCommand(updateCustomer, con);
+				customerUpdate.Parameters.AddWithValue("@CUSTOMER", custEditNameTextBox.Text);
+				customerUpdate.Parameters.AddWithValue("@CUSTOMERID", custEditIDTextBox.Text);
+				customerUpdate.ExecuteNonQuery();
 
 				String updateAddress = @"UPDATE address SET address = @ADDRESS, 
 															address2 = @ADDRESS2,
@@ -68,25 +67,29 @@ namespace FrenchDesktopScheduler.Forms
 														WHERE addressId = @ADDRESSID";
 				MySqlCommand addressUpdate = new MySqlCommand(updateAddress, con);
 				addressUpdate.Parameters.AddWithValue("@ADDRESS", custEditAddTextBox.Text);
-				addressUpdate.Parameters.AddWithValue("@ADDRESSID", custEditIDTextBox.Text);
 				addressUpdate.Parameters.AddWithValue("@ADDRESS2", custEditAdd2TextBox.Text);
 				addressUpdate.Parameters.AddWithValue("@POST", custEditPostTextBox.Text);
-				addressUpdate.Parameters.AddWithValue("@PHONE", custEditPhoneTextBox.Text); 
+				addressUpdate.Parameters.AddWithValue("@PHONE", custEditPhoneTextBox.Text);
+				addressUpdate.Parameters.AddWithValue("@ADDRESSID", textBox1.Text);
 				addressUpdate.ExecuteNonQuery();
 
-				String updateCustomer = @"UPDATE customer SET customerName = @CUSTOMER WHERE customerId = @CUSTOMERID";
-				MySqlCommand customerUpdate = new MySqlCommand(updateCustomer, con);
-				customerUpdate.Parameters.AddWithValue("@CUSTOMER", custEditNameTextBox.Text);
-				customerUpdate.Parameters.AddWithValue("@CUSTOMERID", custEditIDTextBox.Text);
-				
-				customerUpdate.ExecuteNonQuery();
+				String updateCity = @"UPDATE city SET city = @CITY WHERE cityId = @CITYID";
+				MySqlCommand cityUpdate = new MySqlCommand(updateCity, con);
+				cityUpdate.Parameters.AddWithValue("@CITY", custEditCityTextBox.Text);
+				cityUpdate.Parameters.AddWithValue("@CITYID", textBox2.Text);
+				cityUpdate.ExecuteNonQuery();
+
+				String updateCountry = @"UPDATE country SET country = @COUNTRY WHERE countryId = @COUNTRYID";
+				MySqlCommand countryUpdate = new MySqlCommand(updateCountry, con);
+				countryUpdate.Parameters.AddWithValue("@COUNTRY", custEditCountryTextBox.Text);
+				countryUpdate.Parameters.AddWithValue("@COUNTRYID", textBox3.Text);
+				countryUpdate.ExecuteNonQuery();
 
 				con.Close();
 				textBoxClear();
 				textBoxDisable();
 				dgvLoad();
 			}
-
 		}
 
 		// Populates the text boxes with the information from the DGV for editing
@@ -97,12 +100,15 @@ namespace FrenchDesktopScheduler.Forms
 				textBoxEnable();
 				custEditIDTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[0].Value + string.Empty;
 				custEditNameTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[1].Value + string.Empty;
-				custEditAddTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[2].Value + string.Empty;
-				custEditAdd2TextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[3].Value + string.Empty;
-				custEditPostTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[4].Value + string.Empty;
-				custEditPhoneTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[5].Value + string.Empty;
-				custEditCityTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[6].Value + string.Empty;
-				custEditCountryTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[7].Value + string.Empty;
+				custEditAddTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[3].Value + string.Empty;
+				custEditAdd2TextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[4].Value + string.Empty;
+				custEditPostTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[5].Value + string.Empty;
+				custEditPhoneTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[6].Value + string.Empty;
+				custEditCityTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[8].Value + string.Empty;
+				custEditCountryTextBox.Text = customerEditDataGridView.SelectedRows[0].Cells[10].Value + string.Empty;
+				textBox1.Text = customerEditDataGridView.SelectedRows[0].Cells[2].Value + string.Empty;
+				textBox2.Text = customerEditDataGridView.SelectedRows[0].Cells[7].Value + string.Empty;
+				textBox3.Text = customerEditDataGridView.SelectedRows[0].Cells[9].Value + string.Empty;
 			}
 			else
 			{
@@ -120,8 +126,8 @@ namespace FrenchDesktopScheduler.Forms
 
 			String sqlString = @"
 								SELECT customer.customerID, customerName,
-								address.address, address2, postalCode, phone,
-								city.city, country.country
+								address.addressId, address.address, address2, postalCode, phone,
+								city.cityId, city.city, country.countryId, country.country
 								FROM country, city, address, customer
 								WHERE customer.addressId = address.addressId 
 								AND address.cityID = city.cityID 
@@ -201,5 +207,15 @@ namespace FrenchDesktopScheduler.Forms
 			}
 		}
 
+		private void customerEditDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			//if (e.RowIndex >= 0)
+			//{
+			//	selectCustomerID = (int)customerEditDataGridView.Rows[e.RowIndex].Cells[0].Value;
+			//	selectAddressID = (string)customerEditDataGridView.Rows[e.RowIndex].Cells[2].Value;
+			//	selectCityID = (string)customerEditDataGridView.Rows[e.RowIndex].Cells[6].Value;
+			//	selectCountryID = (string)customerEditDataGridView.Rows[e.RowIndex].Cells[7].Value;
+			//}
+		}
 	}
 }

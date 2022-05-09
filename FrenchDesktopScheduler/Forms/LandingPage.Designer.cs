@@ -31,7 +31,7 @@ namespace FrenchDesktopScheduler.Forms
 		{
 			this.langinPageLabel = new System.Windows.Forms.Label();
 			this.customerButton = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.appointmentButton = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.loginBackButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
@@ -52,22 +52,23 @@ namespace FrenchDesktopScheduler.Forms
 			this.customerButton.Location = new System.Drawing.Point(181, 67);
 			this.customerButton.MinimumSize = new System.Drawing.Size(85, 30);
 			this.customerButton.Name = "customerButton";
-			this.customerButton.Size = new System.Drawing.Size(85, 30);
+			this.customerButton.Size = new System.Drawing.Size(96, 34);
 			this.customerButton.TabIndex = 1;
 			this.customerButton.Text = "Customers";
 			this.customerButton.UseVisualStyleBackColor = true;
 			this.customerButton.Click += new System.EventHandler(this.customerButton_Click);
 			// 
-			// button2
+			// appointmentButton
 			// 
-			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(181, 128);
-			this.button2.MinimumSize = new System.Drawing.Size(85, 30);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(85, 30);
-			this.button2.TabIndex = 2;
-			this.button2.Text = "button2";
-			this.button2.UseVisualStyleBackColor = true;
+			this.appointmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.appointmentButton.Location = new System.Drawing.Point(181, 128);
+			this.appointmentButton.MinimumSize = new System.Drawing.Size(85, 30);
+			this.appointmentButton.Name = "appointmentButton";
+			this.appointmentButton.Size = new System.Drawing.Size(96, 34);
+			this.appointmentButton.TabIndex = 2;
+			this.appointmentButton.Text = "Appointment";
+			this.appointmentButton.UseVisualStyleBackColor = true;
+			this.appointmentButton.Click += new System.EventHandler(this.appointmentButton_Click);
 			// 
 			// button3
 			// 
@@ -75,7 +76,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.button3.Location = new System.Drawing.Point(181, 192);
 			this.button3.MinimumSize = new System.Drawing.Size(85, 30);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(85, 30);
+			this.button3.Size = new System.Drawing.Size(96, 34);
 			this.button3.TabIndex = 3;
 			this.button3.Text = "button3";
 			this.button3.UseVisualStyleBackColor = true;
@@ -99,7 +100,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.ClientSize = new System.Drawing.Size(444, 367);
 			this.Controls.Add(this.loginBackButton);
 			this.Controls.Add(this.button3);
-			this.Controls.Add(this.button2);
+			this.Controls.Add(this.appointmentButton);
 			this.Controls.Add(this.customerButton);
 			this.Controls.Add(this.langinPageLabel);
 			this.Name = "LandingPage";
@@ -114,7 +115,7 @@ namespace FrenchDesktopScheduler.Forms
 
 		private System.Windows.Forms.Label langinPageLabel;
 		private System.Windows.Forms.Button customerButton;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button appointmentButton;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button loginBackButton;
 	}

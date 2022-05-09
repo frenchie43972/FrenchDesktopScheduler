@@ -133,8 +133,6 @@ namespace FrenchDesktopScheduler.Forms
 				dgvLoad();
 				/* -----------------------------------------------END SECTION----------------------------------------------- */
 			}
-
-
 		}
 
 		private void textBoxDisable()
@@ -178,8 +176,7 @@ namespace FrenchDesktopScheduler.Forms
 				e.Handled = true;
 				MessageBox.Show("Input must be a number only.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-			
+			}			
 		}
 
 		// Requires the phone number to be a number and hyphen only. Trying anything else reuslts in an error

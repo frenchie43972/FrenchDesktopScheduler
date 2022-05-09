@@ -101,6 +101,12 @@
     <Compile Include="Forms\AddCustomer.Designer.cs">
       <DependentUpon>AddCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AppointmentLanding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppointmentLanding.Designer.cs">
+      <DependentUpon>AppointmentLanding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomerLanding.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AddCustomer.resx">
       <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AppointmentLanding.resx">
+      <DependentUpon>AppointmentLanding.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerLanding.resx">
       <DependentUpon>CustomerLanding.cs</DependentUpon>

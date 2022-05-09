@@ -51,6 +51,9 @@ namespace FrenchDesktopScheduler.Forms
 			this.editCustomerButton = new System.Windows.Forms.Button();
 			this.customerEditDataGridView = new System.Windows.Forms.DataGridView();
 			this.customerPageLabel = new System.Windows.Forms.Label();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.textBox3 = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.customerEditDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -232,12 +235,13 @@ namespace FrenchDesktopScheduler.Forms
 			// customerEditDataGridView
 			// 
 			this.customerEditDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.customerEditDataGridView.Location = new System.Drawing.Point(31, 50);
+			this.customerEditDataGridView.Location = new System.Drawing.Point(31, 41);
 			this.customerEditDataGridView.MultiSelect = false;
 			this.customerEditDataGridView.Name = "customerEditDataGridView";
 			this.customerEditDataGridView.ReadOnly = true;
 			this.customerEditDataGridView.Size = new System.Drawing.Size(524, 184);
 			this.customerEditDataGridView.TabIndex = 56;
+			this.customerEditDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customerEditDataGridView_CellContentClick);
 			this.customerEditDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.myBindingComplete);
 			// 
 			// customerPageLabel
@@ -249,6 +253,30 @@ namespace FrenchDesktopScheduler.Forms
 			this.customerPageLabel.Size = new System.Drawing.Size(295, 31);
 			this.customerPageLabel.TabIndex = 55;
 			this.customerPageLabel.Text = "Customer Information";
+			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(165, 129);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
+			this.textBox1.Size = new System.Drawing.Size(59, 20);
+			this.textBox1.TabIndex = 77;
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(165, 103);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.ReadOnly = true;
+			this.textBox2.Size = new System.Drawing.Size(59, 20);
+			this.textBox2.TabIndex = 78;
+			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(165, 77);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.ReadOnly = true;
+			this.textBox3.Size = new System.Drawing.Size(59, 20);
+			this.textBox3.TabIndex = 79;
 			// 
 			// EditCustomer
 			// 
@@ -277,6 +305,9 @@ namespace FrenchDesktopScheduler.Forms
 			this.Controls.Add(this.editCustomerButton);
 			this.Controls.Add(this.customerEditDataGridView);
 			this.Controls.Add(this.customerPageLabel);
+			this.Controls.Add(this.textBox3);
+			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.textBox1);
 			this.Name = "EditCustomer";
 			this.Text = "EditCustomer";
 			((System.ComponentModel.ISupportInitialize)(this.customerEditDataGridView)).EndInit();
@@ -309,5 +340,8 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Button editCustomerButton;
 		private System.Windows.Forms.DataGridView customerEditDataGridView;
 		private System.Windows.Forms.Label customerPageLabel;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox textBox3;
 	}
 }
