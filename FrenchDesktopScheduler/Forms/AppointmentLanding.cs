@@ -51,5 +51,12 @@ namespace FrenchDesktopScheduler.Forms
 			con.Close();
 
 		}
+
+		private void btnAddAppt_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			AddAppointment addAppointment = new AddAppointment();
+			addAppointment.Show();
+		}
 	}
 }

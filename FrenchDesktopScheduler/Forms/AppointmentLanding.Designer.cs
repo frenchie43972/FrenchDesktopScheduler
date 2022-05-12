@@ -33,6 +33,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.appointmentDataGridView = new System.Windows.Forms.DataGridView();
 			this.customerPageLabel = new System.Windows.Forms.Label();
 			this.toLandingButton = new System.Windows.Forms.Button();
+			this.btnAddAppt = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -73,11 +74,23 @@ namespace FrenchDesktopScheduler.Forms
 			this.toLandingButton.UseVisualStyleBackColor = true;
 			this.toLandingButton.Click += new System.EventHandler(this.toLandingButton_Click);
 			// 
+			// btnAddAppt
+			// 
+			this.btnAddAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnAddAppt.Location = new System.Drawing.Point(12, 391);
+			this.btnAddAppt.Name = "btnAddAppt";
+			this.btnAddAppt.Size = new System.Drawing.Size(145, 47);
+			this.btnAddAppt.TabIndex = 61;
+			this.btnAddAppt.Text = "Add Appointment";
+			this.btnAddAppt.UseVisualStyleBackColor = true;
+			this.btnAddAppt.Click += new System.EventHandler(this.btnAddAppt_Click);
+			// 
 			// AppointmentLanding
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btnAddAppt);
 			this.Controls.Add(this.toLandingButton);
 			this.Controls.Add(this.appointmentDataGridView);
 			this.Controls.Add(this.customerPageLabel);
@@ -97,5 +110,6 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.DataGridView appointmentDataGridView;
 		private System.Windows.Forms.Label customerPageLabel;
 		private System.Windows.Forms.Button toLandingButton;
+		private System.Windows.Forms.Button btnAddAppt;
 	}
 }
