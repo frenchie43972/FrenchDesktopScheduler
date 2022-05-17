@@ -14,11 +14,6 @@ namespace FrenchDesktopScheduler.Forms
 {
 	public partial class EditCustomer : Form
 	{
-		private int selectCustomerID;
-		private string selectAddressID;
-		private string selectCityID;
-		private string selectCountryID;
-
 		public EditCustomer()
 		{
 			InitializeComponent();
@@ -209,13 +204,7 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void customerEditDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
-			//if (e.RowIndex >= 0)
-			//{
-			//	selectCustomerID = (int)customerEditDataGridView.Rows[e.RowIndex].Cells[0].Value;
-			//	selectAddressID = (string)customerEditDataGridView.Rows[e.RowIndex].Cells[2].Value;
-			//	selectCityID = (string)customerEditDataGridView.Rows[e.RowIndex].Cells[6].Value;
-			//	selectCountryID = (string)customerEditDataGridView.Rows[e.RowIndex].Cells[7].Value;
-			//}
+			
 		}
 	}
 }

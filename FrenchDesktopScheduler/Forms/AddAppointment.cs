@@ -37,7 +37,38 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void addApptSaveButton_Click(object sender, EventArgs e)
 		{
+			// Exception control to ensure all fields are filled out
+			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
+			if (blankComboBox)
+			{
+				MessageBox.Show("All fields are required to be filled out.", "Error!",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			if (addApptEndDateTimePicker.Value < addApptStartDateTimePicker.Value)
+			{
+				MessageBox.Show("End date cannot be greater than Start date.", "Error!",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			else
+			{
+				string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+				MySqlConnection con = new MySqlConnection(constr);
+				con.Open();
 
+				String addAppointment = @"INSERT INTO appointment(customerId, userId, title, description, location, contact, type, url, 
+																  start, end, createDate, createdBy, lastUpdate, lastUpdateBy) 
+										VALUES(@CUSTOMER, '1', 'not needed', 'not needed', 'not needed', 'not needed',
+												@TYPE, 'not needed', @START, @END, NOW(), 'test', NOW(), 'test')";
+				MySqlCommand appointmentAdd = new MySqlCommand(addAppointment, con);
+				appointmentAdd.Parameters.AddWithValue("@CUSTOMER", addApptCustComboBox.Text);
+				appointmentAdd.Parameters.AddWithValue("@TYPE", addApptComboBox.Text);
+				appointmentAdd.Parameters.AddWithValue("@START", addApptStartDateTimePicker.Value);
+				appointmentAdd.Parameters.AddWithValue("@END", addApptEndDateTimePicker.Value);
+				appointmentAdd.ExecuteNonQuery();
+				int appointmentID = (int)appointmentAdd.LastInsertedId;
+
+				con.Close();
+			}
 		}
 
 		private void LoadCustomer()
@@ -50,7 +81,7 @@ namespace FrenchDesktopScheduler.Forms
 				con.Open();
 
 				String sqlString = @"
-								SELECT customerName
+								SELECT customerId, customerName
 								FROM customer";
 				MySqlCommand cmd = new MySqlCommand(sqlString, con);
 				MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
@@ -61,15 +92,22 @@ namespace FrenchDesktopScheduler.Forms
 				{
 					while (reader.Read())
 					{
-						addApptCustComboBox.Items.Add(reader.GetString("customerName"));
+						//int id;
+						//bool result = int.TryParse(addApptCustComboBox.SelectedValue.ToString(), out id);
+						//addApptCustComboBox.Items.Add(reader.GetString("customerName"));
+						//custIDTextBox = result;
+						addApptCustComboBox.DataSource = reader;
+						addApptCustComboBox.DisplayMember = "customerName";
+						addApptCustComboBox.ValueMember = "customerId";
+
 					}
 				}
+				con.Close();
 			}
 			catch(Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
-
 		}
 
 		private void LoadAppointment()
@@ -96,6 +134,7 @@ namespace FrenchDesktopScheduler.Forms
 						addApptComboBox.Items.Add(reader.GetString("type"));
 					}
 				}
+				con.Close();
 			}
 			catch (Exception ex)
 			{
