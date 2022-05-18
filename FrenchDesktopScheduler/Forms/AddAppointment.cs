@@ -68,6 +68,9 @@ namespace FrenchDesktopScheduler.Forms
 				int appointmentID = (int)appointmentAdd.LastInsertedId;
 
 				con.Close();
+				this.Hide();
+				AddAppointment saveAppointment = new AddAppointment();
+				saveAppointment.Show();
 			}
 		}
 
@@ -92,14 +95,7 @@ namespace FrenchDesktopScheduler.Forms
 				{
 					while (reader.Read())
 					{
-						//int id;
-						//bool result = int.TryParse(addApptCustComboBox.SelectedValue.ToString(), out id);
-						//addApptCustComboBox.Items.Add(reader.GetString("customerName"));
-						//custIDTextBox = result;
-						addApptCustComboBox.DataSource = reader;
-						addApptCustComboBox.DisplayMember = "customerName";
-						addApptCustComboBox.ValueMember = "customerId";
-
+						addApptCustComboBox.Items.Add(reader.GetString("customerId"));
 					}
 				}
 				con.Close();
