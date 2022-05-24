@@ -46,7 +46,7 @@ namespace FrenchDesktopScheduler.Forms
 			}
 			if (addApptEndDateTimePicker.Value < addApptStartDateTimePicker.Value)
 			{
-				MessageBox.Show("End date cannot be greater than Start date.", "Error!",
+				MessageBox.Show("End date/time cannot be greater than Start date/time.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else

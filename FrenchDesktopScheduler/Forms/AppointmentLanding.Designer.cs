@@ -44,6 +44,8 @@ namespace FrenchDesktopScheduler.Forms
 			this.btnDeleteAppt = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnSaveEdit = new System.Windows.Forms.Button();
+			this.apptIDTextBox = new System.Windows.Forms.TextBox();
+			this.labelApptID = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -151,7 +153,7 @@ namespace FrenchDesktopScheduler.Forms
 			// 
 			// ApptTypeTextBox
 			// 
-			this.ApptTypeTextBox.Location = new System.Drawing.Point(92, 244);
+			this.ApptTypeTextBox.Location = new System.Drawing.Point(92, 248);
 			this.ApptTypeTextBox.Name = "ApptTypeTextBox";
 			this.ApptTypeTextBox.Size = new System.Drawing.Size(176, 20);
 			this.ApptTypeTextBox.TabIndex = 87;
@@ -186,12 +188,31 @@ namespace FrenchDesktopScheduler.Forms
 			this.btnSaveEdit.TabIndex = 90;
 			this.btnSaveEdit.Text = "Save Edit";
 			this.btnSaveEdit.UseVisualStyleBackColor = true;
+			this.btnSaveEdit.Click += new System.EventHandler(this.btnSaveEdit_Click);
+			// 
+			// apptIDTextBox
+			// 
+			this.apptIDTextBox.Location = new System.Drawing.Point(358, 248);
+			this.apptIDTextBox.Name = "apptIDTextBox";
+			this.apptIDTextBox.Size = new System.Drawing.Size(42, 20);
+			this.apptIDTextBox.TabIndex = 92;
+			// 
+			// labelApptID
+			// 
+			this.labelApptID.AutoSize = true;
+			this.labelApptID.Location = new System.Drawing.Point(276, 251);
+			this.labelApptID.Name = "labelApptID";
+			this.labelApptID.Size = new System.Drawing.Size(43, 13);
+			this.labelApptID.TabIndex = 91;
+			this.labelApptID.Text = "Appt ID";
 			// 
 			// AppointmentLanding
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.apptIDTextBox);
+			this.Controls.Add(this.labelApptID);
 			this.Controls.Add(this.btnSaveEdit);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnDeleteAppt);
@@ -233,5 +254,7 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Button btnDeleteAppt;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnSaveEdit;
+		private System.Windows.Forms.TextBox apptIDTextBox;
+		private System.Windows.Forms.Label labelApptID;
 	}
 }

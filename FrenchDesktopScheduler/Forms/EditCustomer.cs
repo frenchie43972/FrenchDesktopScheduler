@@ -147,7 +147,7 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void textBoxDisable()
 		{
-			custEditIDTextBox.Enabled = false;
+			custEditIDTextBox.Enabled = false; 
 			custEditNameTextBox.Enabled = false;
 			custEditAddTextBox.Enabled = false;
 			custEditAdd2TextBox.Enabled = false;
