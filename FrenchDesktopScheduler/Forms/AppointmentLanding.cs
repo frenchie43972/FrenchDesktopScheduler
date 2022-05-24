@@ -18,6 +18,7 @@ namespace FrenchDesktopScheduler.Forms
 		{
 			InitializeComponent();
 			dgvLoad();
+			textBoxDisable();
 		}
 
 		private void toLandingButton_Click(object sender, EventArgs e)
@@ -60,8 +61,43 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void btnEditAppt_Click(object sender, EventArgs e)
 		{
+
+			try
+			{
+				if (appointmentDataGridView.SelectedRows.Count > 0)
+				{
+					textBoxEnable();
+					ApptTypeTextBox.Text = appointmentDataGridView.SelectedRows[0].Cells[2].Value + string.Empty;
+					editApptStartDateTimePicker.Text = appointmentDataGridView.SelectedRows[0].Cells[3].Value + string.Empty;
+					editApptEndDateTimePicker.Text = appointmentDataGridView.SelectedRows[0].Cells[4].Value + string.Empty;
+				}
+			}
+			catch
+			{
+				MessageBox.Show("Please Select at Least One Row.", "Null Error",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+
+		}
+
+		private void textBoxDisable()
+		{
+			ApptTypeTextBox.Enabled = false;
+			editApptStartDateTimePicker.Enabled = false;
+			editApptEndDateTimePicker.Enabled = false;
+		}
+
+		private void textBoxEnable()
+		{
+			ApptTypeTextBox.Enabled = true;
+			editApptStartDateTimePicker.Enabled = true;
+			editApptEndDateTimePicker.Enabled = true;
+		}
+
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
 			this.Hide();
-			EditAppointment editAppointment = new EditAppointment();
+			AppointmentLanding editAppointment = new AppointmentLanding();
 			editAppointment.Show();
 		}
 	}
