@@ -36,9 +36,8 @@ namespace FrenchDesktopScheduler.Forms
 			String sqlString = @"
 								SELECT appointment.appointmentId, customer.customerName, type, start, end
 								FROM customer, appointment
-								WHERE appointment.customerId = appointment.appointmentId 
-								AND appointment.customerId = customer.customerId"; 
-								
+								WHERE appointment.customerId = customer.customerId";
+
 			MySqlCommand cmd = new MySqlCommand(sqlString, con);
 			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
 			DataTable appointmentDT = new DataTable();
@@ -57,6 +56,13 @@ namespace FrenchDesktopScheduler.Forms
 			this.Hide();
 			AddAppointment addAppointment = new AddAppointment();
 			addAppointment.Show();
+		}
+
+		private void btnEditAppt_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			EditAppointment editAppointment = new EditAppointment();
+			editAppointment.Show();
 		}
 	}
 }
