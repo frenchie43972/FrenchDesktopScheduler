@@ -46,6 +46,9 @@ namespace FrenchDesktopScheduler.Forms
 			this.btnSaveEdit = new System.Windows.Forms.Button();
 			this.apptIDTextBox = new System.Windows.Forms.TextBox();
 			this.labelApptID = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.filterWeekRadio = new System.Windows.Forms.RadioButton();
+			this.filterMonthRadio = new System.Windows.Forms.RadioButton();
 			((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -175,7 +178,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(145, 47);
 			this.btnCancel.TabIndex = 89;
-			this.btnCancel.Text = "Cancel";
+			this.btnCancel.Text = "Cancel / Clear";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
@@ -192,7 +195,7 @@ namespace FrenchDesktopScheduler.Forms
 			// 
 			// apptIDTextBox
 			// 
-			this.apptIDTextBox.Location = new System.Drawing.Point(358, 248);
+			this.apptIDTextBox.Location = new System.Drawing.Point(337, 248);
 			this.apptIDTextBox.Name = "apptIDTextBox";
 			this.apptIDTextBox.Size = new System.Drawing.Size(42, 20);
 			this.apptIDTextBox.TabIndex = 92;
@@ -206,11 +209,50 @@ namespace FrenchDesktopScheduler.Forms
 			this.labelApptID.TabIndex = 91;
 			this.labelApptID.Text = "Appt ID";
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(419, 267);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(167, 16);
+			this.label1.TabIndex = 93;
+			this.label1.Text = "Filter Appointments By:";
+			// 
+			// filterWeekRadio
+			// 
+			this.filterWeekRadio.AutoSize = true;
+			this.filterWeekRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.filterWeekRadio.Location = new System.Drawing.Point(424, 300);
+			this.filterWeekRadio.Name = "filterWeekRadio";
+			this.filterWeekRadio.Size = new System.Drawing.Size(58, 17);
+			this.filterWeekRadio.TabIndex = 96;
+			this.filterWeekRadio.TabStop = true;
+			this.filterWeekRadio.Text = "Week";
+			this.filterWeekRadio.UseVisualStyleBackColor = true;
+			this.filterWeekRadio.CheckedChanged += new System.EventHandler(this.filterWeekRadio_CheckedChanged);
+			// 
+			// filterMonthRadio
+			// 
+			this.filterMonthRadio.AutoSize = true;
+			this.filterMonthRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.filterMonthRadio.Location = new System.Drawing.Point(515, 300);
+			this.filterMonthRadio.Name = "filterMonthRadio";
+			this.filterMonthRadio.Size = new System.Drawing.Size(60, 17);
+			this.filterMonthRadio.TabIndex = 97;
+			this.filterMonthRadio.TabStop = true;
+			this.filterMonthRadio.Text = "Month";
+			this.filterMonthRadio.UseVisualStyleBackColor = true;
+			this.filterMonthRadio.CheckedChanged += new System.EventHandler(this.filterMonthRadio_CheckedChanged);
+			// 
 			// AppointmentLanding
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.filterMonthRadio);
+			this.Controls.Add(this.filterWeekRadio);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.apptIDTextBox);
 			this.Controls.Add(this.labelApptID);
 			this.Controls.Add(this.btnSaveEdit);
@@ -256,5 +298,8 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Button btnSaveEdit;
 		private System.Windows.Forms.TextBox apptIDTextBox;
 		private System.Windows.Forms.Label labelApptID;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.RadioButton filterWeekRadio;
+		private System.Windows.Forms.RadioButton filterMonthRadio;
 	}
 }

@@ -83,6 +83,15 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void btnSaveEdit_Click(object sender, EventArgs e)
 		{
+			DateTime now = DateTime.Now;
+			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
+			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
+			DateTime selectedStart = editApptStartDateTimePicker.Value;
+			DateTime selectedEnd = editApptEndDateTimePicker.Value;
+
+			bool overlap = selectedStart.ToUniversalTime().
+
+			// Ensures all boxes are filled
 			bool isBlank = this.Controls.OfType<TextBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
 			if (isBlank)
 			{
@@ -92,6 +101,11 @@ namespace FrenchDesktopScheduler.Forms
 			if (editApptEndDateTimePicker.Value < editApptStartDateTimePicker.Value)
 			{
 				MessageBox.Show("End date/time cannot be greater than Start date/time.", "Error!",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			if ((selectedStart.TimeOfDay < businessStart) || (selectedStart.TimeOfDay > businessEnd) || (selectedEnd.TimeOfDay < businessStart) || (selectedEnd.TimeOfDay > businessEnd))
+			{
+				MessageBox.Show("You cannot schedule an appointment outside of business hours.", "Null Error",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else
@@ -140,6 +154,44 @@ namespace FrenchDesktopScheduler.Forms
 		private void textBoxClear()
 		{
 			ApptTypeTextBox.Clear();
+		}
+
+		private void filterWeekRadio_CheckedChanged(object sender, EventArgs e)
+		{
+			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+			MySqlConnection con = new MySqlConnection(constr);
+			con.Open();
+
+			string weekFilter= "SELECT * FROM appointment WHERE WEEK(appointment.start)=WEEK(NOW())";
+			MySqlCommand cmd = new MySqlCommand(weekFilter, con);
+			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+			DataTable weekFilterDT = new DataTable();
+			adp.Fill(weekFilterDT);
+
+			appointmentDataGridView.DataSource = weekFilterDT;
+			appointmentDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			appointmentDataGridView.AllowUserToAddRows = false;
+
+			con.Close();
+		}
+
+		private void filterMonthRadio_CheckedChanged(object sender, EventArgs e)
+		{
+			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+			MySqlConnection con = new MySqlConnection(constr);
+			con.Open();
+
+			string monthFilter = "SELECT * FROM appointment WHERE MONTH(appointment.start)=MONTH(NOW())";
+			MySqlCommand cmd = new MySqlCommand(monthFilter, con);
+			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+			DataTable monthFilterDT = new DataTable();
+			adp.Fill(monthFilterDT);
+
+			appointmentDataGridView.DataSource = monthFilterDT;
+			appointmentDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			appointmentDataGridView.AllowUserToAddRows = false;
+
+			con.Close();
 		}
 	}
 }
