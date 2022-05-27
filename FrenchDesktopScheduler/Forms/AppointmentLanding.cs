@@ -49,7 +49,6 @@ namespace FrenchDesktopScheduler.Forms
 			appointmentDataGridView.AllowUserToAddRows = false;
 
 			con.Close();
-
 		}
 
 		private void btnAddAppt_Click(object sender, EventArgs e)

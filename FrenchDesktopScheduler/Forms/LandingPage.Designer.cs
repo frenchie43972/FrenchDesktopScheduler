@@ -32,7 +32,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.langinPageLabel = new System.Windows.Forms.Label();
 			this.customerButton = new System.Windows.Forms.Button();
 			this.appointmentButton = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
+			this.reportsButton = new System.Windows.Forms.Button();
 			this.loginBackButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
@@ -70,16 +70,17 @@ namespace FrenchDesktopScheduler.Forms
 			this.appointmentButton.UseVisualStyleBackColor = true;
 			this.appointmentButton.Click += new System.EventHandler(this.appointmentButton_Click);
 			// 
-			// button3
+			// reportsButton
 			// 
-			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button3.Location = new System.Drawing.Point(181, 192);
-			this.button3.MinimumSize = new System.Drawing.Size(85, 30);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(96, 34);
-			this.button3.TabIndex = 3;
-			this.button3.Text = "button3";
-			this.button3.UseVisualStyleBackColor = true;
+			this.reportsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.reportsButton.Location = new System.Drawing.Point(181, 192);
+			this.reportsButton.MinimumSize = new System.Drawing.Size(85, 30);
+			this.reportsButton.Name = "reportsButton";
+			this.reportsButton.Size = new System.Drawing.Size(96, 34);
+			this.reportsButton.TabIndex = 3;
+			this.reportsButton.Text = "Reports";
+			this.reportsButton.UseVisualStyleBackColor = true;
+			this.reportsButton.Click += new System.EventHandler(this.reportsButton_Click);
 			// 
 			// loginBackButton
 			// 
@@ -99,7 +100,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(444, 367);
 			this.Controls.Add(this.loginBackButton);
-			this.Controls.Add(this.button3);
+			this.Controls.Add(this.reportsButton);
 			this.Controls.Add(this.appointmentButton);
 			this.Controls.Add(this.customerButton);
 			this.Controls.Add(this.langinPageLabel);
@@ -116,7 +117,7 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Label langinPageLabel;
 		private System.Windows.Forms.Button customerButton;
 		private System.Windows.Forms.Button appointmentButton;
-		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button reportsButton;
 		private System.Windows.Forms.Button loginBackButton;
 	}
 }

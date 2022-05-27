@@ -37,5 +37,12 @@ namespace FrenchDesktopScheduler.Forms
 			AppointmentLanding toAppomintment = new AppointmentLanding();
 			toAppomintment.Show();
 		}
+
+		private void reportsButton_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Reports toReports = new Reports();
+			toReports.Show();
+		}
 	}
 }

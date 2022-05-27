@@ -16,9 +16,6 @@ namespace FrenchDesktopScheduler
 {
 	public partial class LoginForm : Form
 	{
-		//private StreamWriter = userLogin;
-		string fileName = "userLogin.txt";
-
 
 		public LoginForm()
 		{
@@ -58,19 +55,19 @@ namespace FrenchDesktopScheduler
 
 			// Verifies the user table to check the username/ password
 
-			if (userDT.Rows.Count > 0)
-			{
-				MessageBox.Show("Login Successful.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			//if (userDT.Rows.Count > 0)
+			//{
+			//	MessageBox.Show("Login Successful.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 				con.Close();
 				this.Hide();
 				LandingPage landingPage = new LandingPage();
 				landingPage.Show();
-			}
-			else
-			{
-				MessageBox.Show("Invalid Login Credentials.", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			//}
+			//else
+			//{
+			//	MessageBox.Show("Invalid Login Credentials.", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			//}
 
 			WriteLoginToLog();
 			con.Close();
