@@ -37,8 +37,33 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void addApptSaveButton_Click(object sender, EventArgs e)
 		{
-			// Exception control to ensure all fields are filled out
+			// Exception controls to ensure all fields are filled out, business hours are adhered to,
+			// times to not overlap and users are not double booked (overlapped)
 			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
+			int selectedCustomerId = Convert.ToInt32(addApptCustComboBox.SelectedValue);
+			string selectedType = addApptComboBox.SelectedValue.ToString();
+			bool overlapping = false;
+
+			DateTime now = DateTime.Now;
+			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
+			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
+			DateTime selectedStart = addApptStartDateTimePicker.Value;
+			DateTime selectedEnd = addApptEndDateTimePicker.Value;
+
+			//foreach (var appt in AppointmentLanding.)
+			//{
+
+			//}
+
+			//if (selectedStart >= appt.Start && selectedStart < appt.End)
+			//{
+			//	overlapping = true;
+			//}
+
+			//if (selectedEnd > appt.Start && selectedEnd <= appt.End)
+			//{
+			//	overlapping = true;
+			//}
 			if (blankComboBox)
 			{
 				MessageBox.Show("All fields are required to be filled out.", "Error!",

@@ -89,8 +89,6 @@ namespace FrenchDesktopScheduler.Forms
 			DateTime selectedStart = editApptStartDateTimePicker.Value;
 			DateTime selectedEnd = editApptEndDateTimePicker.Value;
 
-			bool overlap = selectedStart.ToUniversalTime().
-
 			// Ensures all boxes are filled
 			bool isBlank = this.Controls.OfType<TextBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
 			if (isBlank)
