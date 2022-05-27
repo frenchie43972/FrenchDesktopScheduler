@@ -113,6 +113,18 @@
     <Compile Include="Forms\AppointmentLanding.Designer.cs">
       <DependentUpon>AppointmentLanding.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ApptCountReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ApptCountReport.Designer.cs">
+      <DependentUpon>ApptCountReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConsultantReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConsultantReport.Designer.cs">
+      <DependentUpon>ConsultantReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomerLanding.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +177,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AppointmentLanding.resx">
       <DependentUpon>AppointmentLanding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ApptCountReport.resx">
+      <DependentUpon>ApptCountReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConsultantReport.resx">
+      <DependentUpon>ConsultantReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerLanding.resx">
       <DependentUpon>CustomerLanding.cs</DependentUpon>

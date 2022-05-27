@@ -34,5 +34,19 @@ namespace FrenchDesktopScheduler.Forms
 			MonthlyReport toMonthlyReports = new MonthlyReport();
 			toMonthlyReports.Show();
 		}
+
+		private void consultantApptButton_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			ConsultantReport toConsultantReports = new ConsultantReport();
+			toConsultantReports.Show();
+		}
+
+		private void apptCountButton_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			ApptCountReport toApptReports = new ApptCountReport();
+			toApptReports.Show();			
+		}
 	}
 }

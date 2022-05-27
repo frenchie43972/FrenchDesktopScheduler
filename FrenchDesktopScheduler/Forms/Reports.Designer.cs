@@ -32,6 +32,8 @@ namespace FrenchDesktopScheduler.Forms
 			this.label1 = new System.Windows.Forms.Label();
 			this.toLandingButton = new System.Windows.Forms.Button();
 			this.monthNumApptButton = new System.Windows.Forms.Button();
+			this.consultantApptButton = new System.Windows.Forms.Button();
+			this.apptCountButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -66,11 +68,35 @@ namespace FrenchDesktopScheduler.Forms
 			this.monthNumApptButton.UseVisualStyleBackColor = true;
 			this.monthNumApptButton.Click += new System.EventHandler(this.monthNumApptButton_Click);
 			// 
+			// consultantApptButton
+			// 
+			this.consultantApptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.consultantApptButton.Location = new System.Drawing.Point(73, 160);
+			this.consultantApptButton.Name = "consultantApptButton";
+			this.consultantApptButton.Size = new System.Drawing.Size(145, 47);
+			this.consultantApptButton.TabIndex = 63;
+			this.consultantApptButton.Text = "Appointments by Consultant";
+			this.consultantApptButton.UseVisualStyleBackColor = true;
+			this.consultantApptButton.Click += new System.EventHandler(this.consultantApptButton_Click);
+			// 
+			// apptCountButton
+			// 
+			this.apptCountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.apptCountButton.Location = new System.Drawing.Point(73, 250);
+			this.apptCountButton.Name = "apptCountButton";
+			this.apptCountButton.Size = new System.Drawing.Size(145, 47);
+			this.apptCountButton.TabIndex = 64;
+			this.apptCountButton.Text = "Count of All Appointments";
+			this.apptCountButton.UseVisualStyleBackColor = true;
+			this.apptCountButton.Click += new System.EventHandler(this.apptCountButton_Click);
+			// 
 			// Reports
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(288, 450);
+			this.Controls.Add(this.apptCountButton);
+			this.Controls.Add(this.consultantApptButton);
 			this.Controls.Add(this.monthNumApptButton);
 			this.Controls.Add(this.toLandingButton);
 			this.Controls.Add(this.label1);
@@ -87,5 +113,7 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button toLandingButton;
 		private System.Windows.Forms.Button monthNumApptButton;
+		private System.Windows.Forms.Button consultantApptButton;
+		private System.Windows.Forms.Button apptCountButton;
 	}
 }
