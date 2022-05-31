@@ -39,7 +39,7 @@ namespace FrenchDesktopScheduler.Forms
 		{
 			// Exception controls to ensure all fields are filled out, business hours are adhered to,
 			// times to not overlap and users are not double booked (overlapped)
-			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
+			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text)); // Checksif text boxes are empty
 			int selectedCustomerId = Convert.ToInt32(addApptCustComboBox.SelectedValue);
 			string selectedType = addApptComboBox.SelectedValue.ToString();
 			bool overlapping = false;

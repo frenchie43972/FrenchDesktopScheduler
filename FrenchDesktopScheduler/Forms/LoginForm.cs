@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -40,11 +42,14 @@ namespace FrenchDesktopScheduler
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
+			TimeZone currentZone = TimeZone.CurrentTimeZone;
+
+			var tokyoTime = "Tokyo Standard Time";
 
 			MySqlConnection con = new MySqlConnection("server=127.0.0.1;userid=sqlUser;password=Passw0rd!;database=client_schedule");
 
 			con.Open();
-			String sqlString = "SELECT * FROM user where userName = @userName AND password = @password";
+			String sqlString = "SELECT * FROM user WHERE userName = @userName AND password = @password";
 			MySqlCommand cmd = new MySqlCommand(sqlString, con);
 			cmd.Parameters.AddWithValue("@userName", usernameTextBox.Text);
 			cmd.Parameters.AddWithValue("@password", passwordTextBox.Text);
@@ -55,21 +60,35 @@ namespace FrenchDesktopScheduler
 
 			// Verifies the user table to check the username/ password
 
-			//if (userDT.Rows.Count > 0)
-			//{
-			//	MessageBox.Show("Login Successful.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			if (userDT.Rows.Count > 0)
+			{
+				if (currentZone.StandardName == tokyoTime)
+				{
+					MessageBox.Show("ログインに成功しました.", "ログインに成功しました!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				else
+				{
+					MessageBox.Show("Login Successful.", "Login Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
 
 				con.Close();
 				this.Hide();
 				LandingPage landingPage = new LandingPage();
 				landingPage.Show();
-			//}
-			//else
-			//{
-			//	MessageBox.Show("Invalid Login Credentials.", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			//}
+			}
+			else
+			{
+				if (currentZone.StandardName == tokyoTime)
+				{
+					MessageBox.Show("無効なログイン資格情報.", "ログインエラー!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				else
+				{
+					MessageBox.Show("Invalid Login Credentials.", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
 
-			WriteLoginToLog();
+			//WriteLoginToLog();
 			con.Close();
 		}
 	}
