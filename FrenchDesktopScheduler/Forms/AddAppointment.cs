@@ -37,12 +37,15 @@ namespace FrenchDesktopScheduler.Forms
 
 		private void addApptSaveButton_Click(object sender, EventArgs e)
 		{
+			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+			MySqlConnection con = new MySqlConnection(constr);
+			con.Open();
+
 			// Exception controls to ensure all fields are filled out, business hours are adhered to,
 			// times to not overlap and users are not double booked (overlapped)
 			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text)); // Checksif text boxes are empty
 			int selectedCustomerId = Convert.ToInt32(addApptCustComboBox.SelectedValue);
-			string selectedType = addApptComboBox.SelectedValue.ToString();
-			bool overlapping = false;
+			//string selectedType = addApptComboBox.SelectedValue.ToString();
 
 			DateTime now = DateTime.Now;
 			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
@@ -50,20 +53,10 @@ namespace FrenchDesktopScheduler.Forms
 			DateTime selectedStart = addApptStartDateTimePicker.Value;
 			DateTime selectedEnd = addApptEndDateTimePicker.Value;
 
-			//foreach (var appt in AppointmentLanding.)
-			//{
-
-			//}
-
-			//if (selectedStart >= appt.Start && selectedStart < appt.End)
-			//{
-			//	overlapping = true;
-			//}
-
-			//if (selectedEnd > appt.Start && selectedEnd <= appt.End)
-			//{
-			//	overlapping = true;
-			//}
+			// TODO select all records from appt table where userid = @user and start between @start and @end
+			// create dt to hold results of sql statement 
+			// if row count for dt > 0 = overlap
+			
 			if (blankComboBox)
 			{
 				MessageBox.Show("All fields are required to be filled out.", "Error!",
@@ -76,10 +69,6 @@ namespace FrenchDesktopScheduler.Forms
 			}
 			else
 			{
-				string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
-				MySqlConnection con = new MySqlConnection(constr);
-				con.Open();
-
 				String addAppointment = @"INSERT INTO appointment(customerId, userId, title, description, location, contact, type, url, 
 																  start, end, createDate, createdBy, lastUpdate, lastUpdateBy) 
 										VALUES(@CUSTOMER, '1', 'not needed', 'not needed', 'not needed', 'not needed',

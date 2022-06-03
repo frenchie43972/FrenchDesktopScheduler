@@ -126,6 +126,33 @@ namespace FrenchDesktopScheduler.Forms
 			}
 		}
 
+		private void btnDeleteAppt_Click(object sender, EventArgs e)
+		{
+			if (appointmentDataGridView.SelectedRows.Count > 0)
+			{
+				DialogResult result = MessageBox.Show("Are you sure you want to permanently delete this record?", "Delete Item?",
+				MessageBoxButtons.YesNo);
+
+				string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+				MySqlConnection con = new MySqlConnection(constr);
+				con.Open();
+
+				int apptID = (int)appointmentDataGridView.SelectedRows[0].Cells[0].Value;
+				string deleteAppt = $"DELETE FROM appointment WHERE appointmentId = {apptID}";
+				MySqlCommand appointmentDelete = new MySqlCommand(deleteAppt, con);
+				appointmentDelete.Prepare();
+				appointmentDelete.ExecuteNonQuery();
+
+				con.Close();
+				dgvLoad();
+			}
+			else
+			{
+				MessageBox.Show("Please Select at Least One Row.", "Null Error",
+					MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
 		private void textBoxDisable()
 		{
 			apptIDTextBox.Enabled = false;
@@ -190,5 +217,7 @@ namespace FrenchDesktopScheduler.Forms
 
 			con.Close();
 		}
+
+		
 	}
 }
