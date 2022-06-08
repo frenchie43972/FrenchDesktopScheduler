@@ -19,6 +19,7 @@ namespace FrenchDesktopScheduler.Forms
 			InitializeComponent();
 			LoadCustomer();
 			LoadAppointment();
+			
 		}
 
 		private void toLandingButton_Click(object sender, EventArgs e)
@@ -43,20 +44,41 @@ namespace FrenchDesktopScheduler.Forms
 
 			// Exception controls to ensure all fields are filled out, business hours are adhered to,
 			// times to not overlap and users are not double booked (overlapped)
-			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text)); // Checksif text boxes are empty
+			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text)); // Checks if text boxes are empty
 			int selectedCustomerId = Convert.ToInt32(addApptCustComboBox.SelectedValue);
 			//string selectedType = addApptComboBox.SelectedValue.ToString();
 
 			DateTime now = DateTime.Now;
 			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
 			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
-			DateTime selectedStart = addApptStartDateTimePicker.Value;
-			DateTime selectedEnd = addApptEndDateTimePicker.Value;
+			//DateTime selectedStart = DateTimeOffset.Parse(addApptStartDateTimePicker.Text).UtcDateTime;
+			//DateTime selectedEnd = DateTimeOffset.Parse(addApptEndDateTimePicker.Text).UtcDateTime;
+
+			DateTime selectedStart = TimeZoneInfo.ConvertTimeToUtc(addApptStartDateTimePicker.Value);
+			DateTime selectedEnd = TimeZoneInfo.ConvertTimeToUtc(addApptEndDateTimePicker.Value);
+
 
 			// TODO select all records from appt table where userid = @user and start between @start and @end
 			// create dt to hold results of sql statement 
 			// if row count for dt > 0 = overlap
-			
+
+			String overlapCheck = @"SELECT * FROM appointment WHERE userId = @USER AND start BETWEEN @start AND @end";
+			//String overlapCheck = @"SELECT * FROM appointment WHERE userId = @USER AND start = @START AND end = @END 
+			//						BETWEEN start AND end";
+			MySqlCommand checkOverlap = new MySqlCommand(overlapCheck, con);
+			checkOverlap.Parameters.AddWithValue("@START", selectedStart);
+			checkOverlap.Parameters.AddWithValue("@END", selectedEnd);
+			checkOverlap.Parameters.AddWithValue("@USER", UserIDTextBox.Text);
+			MySqlDataAdapter adp = new MySqlDataAdapter(checkOverlap);
+			DataTable overlapDT = new DataTable();
+			adp.Fill(overlapDT);
+
+
+			if (overlapDT.Rows.Count > 0)
+			{
+				MessageBox.Show("Overlapped Appointment.", "Error!",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 			if (blankComboBox)
 			{
 				MessageBox.Show("All fields are required to be filled out.", "Error!",
@@ -74,10 +96,14 @@ namespace FrenchDesktopScheduler.Forms
 										VALUES(@CUSTOMER, '1', 'not needed', 'not needed', 'not needed', 'not needed',
 												@TYPE, 'not needed', @START, @END, NOW(), 'test', NOW(), 'test')";
 				MySqlCommand appointmentAdd = new MySqlCommand(addAppointment, con);
+
+				DateTime addStart = TimeZoneInfo.ConvertTimeToUtc(addApptStartDateTimePicker.Value);
+				DateTime addEnd = TimeZoneInfo.ConvertTimeToUtc(addApptEndDateTimePicker.Value);
+
 				appointmentAdd.Parameters.AddWithValue("@CUSTOMER", addApptCustComboBox.Text);
 				appointmentAdd.Parameters.AddWithValue("@TYPE", addApptComboBox.Text);
-				appointmentAdd.Parameters.AddWithValue("@START", addApptStartDateTimePicker.Value);
-				appointmentAdd.Parameters.AddWithValue("@END", addApptEndDateTimePicker.Value);
+				appointmentAdd.Parameters.AddWithValue("@START", addStart);
+				appointmentAdd.Parameters.AddWithValue("@END", addEnd);
 				appointmentAdd.ExecuteNonQuery();
 				int appointmentID = (int)appointmentAdd.LastInsertedId;
 

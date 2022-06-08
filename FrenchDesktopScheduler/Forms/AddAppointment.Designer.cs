@@ -41,6 +41,8 @@ namespace FrenchDesktopScheduler.Forms
 			this.toLandingButton = new System.Windows.Forms.Button();
 			this.addApptSaveButton = new System.Windows.Forms.Button();
 			this.apptCancelButton = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.UserIDTextBox = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// customerPageLabel
@@ -56,7 +58,7 @@ namespace FrenchDesktopScheduler.Forms
 			// endLabel
 			// 
 			this.endLabel.AutoSize = true;
-			this.endLabel.Location = new System.Drawing.Point(17, 230);
+			this.endLabel.Location = new System.Drawing.Point(16, 271);
 			this.endLabel.Name = "endLabel";
 			this.endLabel.Size = new System.Drawing.Size(26, 13);
 			this.endLabel.TabIndex = 64;
@@ -65,7 +67,7 @@ namespace FrenchDesktopScheduler.Forms
 			// startLabel
 			// 
 			this.startLabel.AutoSize = true;
-			this.startLabel.Location = new System.Drawing.Point(17, 180);
+			this.startLabel.Location = new System.Drawing.Point(16, 221);
 			this.startLabel.Name = "startLabel";
 			this.startLabel.Size = new System.Drawing.Size(29, 13);
 			this.startLabel.TabIndex = 63;
@@ -74,7 +76,7 @@ namespace FrenchDesktopScheduler.Forms
 			// typeLabel
 			// 
 			this.typeLabel.AutoSize = true;
-			this.typeLabel.Location = new System.Drawing.Point(17, 125);
+			this.typeLabel.Location = new System.Drawing.Point(16, 166);
 			this.typeLabel.Name = "typeLabel";
 			this.typeLabel.Size = new System.Drawing.Size(56, 13);
 			this.typeLabel.TabIndex = 62;
@@ -83,7 +85,7 @@ namespace FrenchDesktopScheduler.Forms
 			// customerLabel
 			// 
 			this.customerLabel.AutoSize = true;
-			this.customerLabel.Location = new System.Drawing.Point(17, 74);
+			this.customerLabel.Location = new System.Drawing.Point(16, 115);
 			this.customerLabel.Name = "customerLabel";
 			this.customerLabel.Size = new System.Drawing.Size(51, 13);
 			this.customerLabel.TabIndex = 61;
@@ -92,7 +94,7 @@ namespace FrenchDesktopScheduler.Forms
 			// addApptEndDateTimePicker
 			// 
 			this.addApptEndDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.addApptEndDateTimePicker.Location = new System.Drawing.Point(97, 224);
+			this.addApptEndDateTimePicker.Location = new System.Drawing.Point(96, 265);
 			this.addApptEndDateTimePicker.Name = "addApptEndDateTimePicker";
 			this.addApptEndDateTimePicker.Size = new System.Drawing.Size(265, 20);
 			this.addApptEndDateTimePicker.TabIndex = 69;
@@ -100,7 +102,7 @@ namespace FrenchDesktopScheduler.Forms
 			// addApptStartDateTimePicker
 			// 
 			this.addApptStartDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.addApptStartDateTimePicker.Location = new System.Drawing.Point(97, 174);
+			this.addApptStartDateTimePicker.Location = new System.Drawing.Point(96, 215);
 			this.addApptStartDateTimePicker.Name = "addApptStartDateTimePicker";
 			this.addApptStartDateTimePicker.Size = new System.Drawing.Size(265, 20);
 			this.addApptStartDateTimePicker.TabIndex = 68;
@@ -108,7 +110,7 @@ namespace FrenchDesktopScheduler.Forms
 			// addApptComboBox
 			// 
 			this.addApptComboBox.FormattingEnabled = true;
-			this.addApptComboBox.Location = new System.Drawing.Point(98, 118);
+			this.addApptComboBox.Location = new System.Drawing.Point(97, 159);
 			this.addApptComboBox.Name = "addApptComboBox";
 			this.addApptComboBox.Size = new System.Drawing.Size(266, 21);
 			this.addApptComboBox.TabIndex = 67;
@@ -116,7 +118,7 @@ namespace FrenchDesktopScheduler.Forms
 			// addApptCustComboBox
 			// 
 			this.addApptCustComboBox.FormattingEnabled = true;
-			this.addApptCustComboBox.Location = new System.Drawing.Point(97, 67);
+			this.addApptCustComboBox.Location = new System.Drawing.Point(96, 108);
 			this.addApptCustComboBox.Name = "addApptCustComboBox";
 			this.addApptCustComboBox.Size = new System.Drawing.Size(265, 21);
 			this.addApptCustComboBox.TabIndex = 66;
@@ -124,7 +126,7 @@ namespace FrenchDesktopScheduler.Forms
 			// toLandingButton
 			// 
 			this.toLandingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.toLandingButton.Location = new System.Drawing.Point(217, 272);
+			this.toLandingButton.Location = new System.Drawing.Point(216, 313);
 			this.toLandingButton.Name = "toLandingButton";
 			this.toLandingButton.Size = new System.Drawing.Size(145, 47);
 			this.toLandingButton.TabIndex = 70;
@@ -135,7 +137,7 @@ namespace FrenchDesktopScheduler.Forms
 			// addApptSaveButton
 			// 
 			this.addApptSaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addApptSaveButton.Location = new System.Drawing.Point(14, 272);
+			this.addApptSaveButton.Location = new System.Drawing.Point(13, 313);
 			this.addApptSaveButton.Name = "addApptSaveButton";
 			this.addApptSaveButton.Size = new System.Drawing.Size(145, 47);
 			this.addApptSaveButton.TabIndex = 71;
@@ -146,7 +148,7 @@ namespace FrenchDesktopScheduler.Forms
 			// apptCancelButton
 			// 
 			this.apptCancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.apptCancelButton.Location = new System.Drawing.Point(113, 341);
+			this.apptCancelButton.Location = new System.Drawing.Point(112, 382);
 			this.apptCancelButton.Name = "apptCancelButton";
 			this.apptCancelButton.Size = new System.Drawing.Size(145, 47);
 			this.apptCancelButton.TabIndex = 72;
@@ -154,11 +156,30 @@ namespace FrenchDesktopScheduler.Forms
 			this.apptCancelButton.UseVisualStyleBackColor = true;
 			this.apptCancelButton.Click += new System.EventHandler(this.apptCancelButton_Click);
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(16, 76);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(43, 13);
+			this.label1.TabIndex = 73;
+			this.label1.Text = "User ID";
+			// 
+			// UserIDTextBox
+			// 
+			this.UserIDTextBox.Location = new System.Drawing.Point(96, 73);
+			this.UserIDTextBox.Name = "UserIDTextBox";
+			this.UserIDTextBox.ReadOnly = true;
+			this.UserIDTextBox.Size = new System.Drawing.Size(62, 20);
+			this.UserIDTextBox.TabIndex = 74;
+			// 
 			// AddAppointment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(386, 425);
+			this.ClientSize = new System.Drawing.Size(386, 464);
+			this.Controls.Add(this.UserIDTextBox);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.apptCancelButton);
 			this.Controls.Add(this.addApptSaveButton);
 			this.Controls.Add(this.toLandingButton);
@@ -193,5 +214,7 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Button toLandingButton;
 		private System.Windows.Forms.Button addApptSaveButton;
 		private System.Windows.Forms.Button apptCancelButton;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox UserIDTextBox;
 	}
 }
