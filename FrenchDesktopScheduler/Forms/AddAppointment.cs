@@ -68,7 +68,7 @@ namespace FrenchDesktopScheduler.Forms
 			MySqlCommand checkOverlap = new MySqlCommand(overlapCheck, con);
 			checkOverlap.Parameters.AddWithValue("@START", selectedStart);
 			checkOverlap.Parameters.AddWithValue("@END", selectedEnd);
-			checkOverlap.Parameters.AddWithValue("@USER", UserIDTextBox.Text);
+			checkOverlap.Parameters.AddWithValue("@USER", addApptCustComboBox.Text);
 			MySqlDataAdapter adp = new MySqlDataAdapter(checkOverlap);
 			DataTable overlapDT = new DataTable();
 			adp.Fill(overlapDT);
@@ -78,6 +78,7 @@ namespace FrenchDesktopScheduler.Forms
 			{
 				MessageBox.Show("Overlapped Appointment.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 			}
 			if (blankComboBox)
 			{
