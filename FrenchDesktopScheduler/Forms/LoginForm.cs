@@ -30,6 +30,29 @@ namespace FrenchDesktopScheduler
 			Application.Exit();
 		}
 
+		private void apptCheck()
+		{
+			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+			MySqlConnection con = new MySqlConnection(constr);
+			con.Open();
+
+			String checkAppt = "SELECT start FROM appointment WHERE start < DATE_SUB(NOW(), INTERVAL 15 MINUTE)";
+
+			MySqlCommand cmd = new MySqlCommand(checkAppt, con);
+			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+			DataTable appointmentDT = new DataTable();
+			adp.Fill(appointmentDT);
+
+			//if (appointmentDT.Rows.Count > 0)
+			//{
+			//	MessageBox.Show("You have an appointment soon.", "ATTENTION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			//}
+			//else
+			//{
+				con.Close();
+			//}
+		}
+
 		// Adds and updates user login time stamps
 		private void WriteLoginToLog()
 		{
@@ -87,7 +110,7 @@ namespace FrenchDesktopScheduler
 					MessageBox.Show("Invalid Login Credentials.", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
-
+			apptCheck();
 			//WriteLoginToLog();
 			con.Close();
 		}
