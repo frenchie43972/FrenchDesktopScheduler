@@ -46,25 +46,16 @@ namespace FrenchDesktopScheduler.Forms
 			// times to not overlap and users are not double booked (overlapped)
 			bool blankComboBox = this.Controls.OfType<ComboBox>().Any(tb => string.IsNullOrEmpty(tb.Text)); // Checks if text boxes are empty
 			int selectedCustomerId = Convert.ToInt32(addApptCustComboBox.SelectedValue);
-			//string selectedType = addApptComboBox.SelectedValue.ToString();
 
 			DateTime now = DateTime.Now;
 			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
 			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
-			//DateTime selectedStart = DateTimeOffset.Parse(addApptStartDateTimePicker.Text).UtcDateTime;
-			//DateTime selectedEnd = DateTimeOffset.Parse(addApptEndDateTimePicker.Text).UtcDateTime;
 
 			DateTime selectedStart = TimeZoneInfo.ConvertTimeToUtc(addApptStartDateTimePicker.Value);
 			DateTime selectedEnd = TimeZoneInfo.ConvertTimeToUtc(addApptEndDateTimePicker.Value);
 
-
-			// TODO select all records from appt table where userid = @user and start between @start and @end
-			// create dt to hold results of sql statement 
-			// if row count for dt > 0 = overlap
-
 			String overlapCheck = @"SELECT * FROM appointment WHERE userId = @USER AND start BETWEEN @start AND @end";
-			//String overlapCheck = @"SELECT * FROM appointment WHERE userId = @USER AND start = @START AND end = @END 
-			//						BETWEEN start AND end";
+
 			MySqlCommand checkOverlap = new MySqlCommand(overlapCheck, con);
 			checkOverlap.Parameters.AddWithValue("@START", selectedStart);
 			checkOverlap.Parameters.AddWithValue("@END", selectedEnd);
@@ -80,12 +71,12 @@ namespace FrenchDesktopScheduler.Forms
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 			}
-			if (blankComboBox)
+			else if (blankComboBox)
 			{
 				MessageBox.Show("All fields are required to be filled out.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			if (addApptEndDateTimePicker.Value < addApptStartDateTimePicker.Value)
+			else if (addApptEndDateTimePicker.Value < addApptStartDateTimePicker.Value)
 			{
 				MessageBox.Show("End date/time cannot be greater than Start date/time.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);

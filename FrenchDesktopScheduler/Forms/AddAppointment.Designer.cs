@@ -41,8 +41,6 @@ namespace FrenchDesktopScheduler.Forms
 			this.toLandingButton = new System.Windows.Forms.Button();
 			this.addApptSaveButton = new System.Windows.Forms.Button();
 			this.apptCancelButton = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.UserIDTextBox = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// customerPageLabel
@@ -156,30 +154,11 @@ namespace FrenchDesktopScheduler.Forms
 			this.apptCancelButton.UseVisualStyleBackColor = true;
 			this.apptCancelButton.Click += new System.EventHandler(this.apptCancelButton_Click);
 			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(16, 76);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(43, 13);
-			this.label1.TabIndex = 73;
-			this.label1.Text = "User ID";
-			// 
-			// UserIDTextBox
-			// 
-			this.UserIDTextBox.Location = new System.Drawing.Point(96, 73);
-			this.UserIDTextBox.Name = "UserIDTextBox";
-			this.UserIDTextBox.ReadOnly = true;
-			this.UserIDTextBox.Size = new System.Drawing.Size(62, 20);
-			this.UserIDTextBox.TabIndex = 74;
-			// 
 			// AddAppointment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(386, 464);
-			this.Controls.Add(this.UserIDTextBox);
-			this.Controls.Add(this.label1);
 			this.Controls.Add(this.apptCancelButton);
 			this.Controls.Add(this.addApptSaveButton);
 			this.Controls.Add(this.toLandingButton);
@@ -214,7 +193,5 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Button toLandingButton;
 		private System.Windows.Forms.Button addApptSaveButton;
 		private System.Windows.Forms.Button apptCancelButton;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox UserIDTextBox;
 	}
 }

@@ -43,10 +43,16 @@ namespace FrenchDesktopScheduler.Forms
 			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
 			DataTable appointmentDT = new DataTable();
 			adp.Fill(appointmentDT);
-
+			
 			appointmentDataGridView.DataSource = appointmentDT;
 			appointmentDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 			appointmentDataGridView.AllowUserToAddRows = false;
+
+			for (int i = 0; i < appointmentDT.Rows.Count; i++)
+			{
+				appointmentDT.Rows[i]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)appointmentDT.Rows[i]["start"], TimeZoneInfo.Local).ToString();
+				appointmentDT.Rows[i]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)appointmentDT.Rows[i]["end"], TimeZoneInfo.Local).ToString();
+			}
 
 			con.Close();
 		}
