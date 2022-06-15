@@ -91,6 +91,8 @@ namespace FrenchDesktopScheduler.Forms
 			DateTime now = DateTime.Now;
 			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
 			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
+			//DateTime selectedStart = TimeZoneInfo.ConvertTimeToUtc(editApptStartDateTimePicker.Value);
+			//DateTime selectedEnd = TimeZoneInfo.ConvertTimeToUtc(editApptEndDateTimePicker.Value);
 			DateTime selectedStart = editApptStartDateTimePicker.Value;
 			DateTime selectedEnd = editApptEndDateTimePicker.Value;
 

@@ -32,25 +32,40 @@ namespace FrenchDesktopScheduler
 
 		private void apptCheck()
 		{
+			DateTime loginTime = DateTime.UtcNow;
+			DateTime loginFifteen = loginTime.AddMinutes(15);
+			string getUser = usernameTextBox.Text;
+
 			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
 			MySqlConnection con = new MySqlConnection(constr);
 			con.Open();
 
-			String checkAppt = "SELECT start FROM appointment WHERE start < DATE_SUB(NOW(), INTERVAL 15 MINUTE)";
+			string userID = "SELECT userId FROM user WHERE userID = @USER";
+			MySqlCommand getUserIdCmd = new MySqlCommand(userID, con);
+			getUserIdCmd.Connection = con;
+			getUserIdCmd.Parameters.AddWithValue("@USER", getUser);
+			object obj = getUserIdCmd.ExecuteScalar();
+			int userIDConvert = Convert.ToInt32(obj.ToString());
+
+			String checkAppt = "SELECT * FROM appointment WHERE userId = @USER AND start BETWEEN @LOGINTIME AND @LOGINFIFTEEN";
 
 			MySqlCommand cmd = new MySqlCommand(checkAppt, con);
+			cmd.Parameters.AddWithValue("@USER", userIDConvert);
+			cmd.Parameters.AddWithValue("@LOGINTIME", loginTime);
+			cmd.Parameters.AddWithValue("@LOGINFIFTEEN", loginFifteen);
+
 			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
 			DataTable appointmentDT = new DataTable();
 			adp.Fill(appointmentDT);
 
-			//if (appointmentDT.Rows.Count > 0)
-			//{
-			//	MessageBox.Show("You have an appointment soon.", "ATTENTION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			//}
-			//else
-			//{
+			if (appointmentDT.Rows.Count > 0)
+			{
+				MessageBox.Show("You have an appointment soon.", "ATTENTION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
 				con.Close();
-			//}
+			}
 		}
 
 		// Adds and updates user login time stamps

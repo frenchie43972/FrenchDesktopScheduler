@@ -64,7 +64,6 @@ namespace FrenchDesktopScheduler.Forms
 			DataTable overlapDT = new DataTable();
 			adp.Fill(overlapDT);
 
-
 			if (overlapDT.Rows.Count > 0)
 			{
 				MessageBox.Show("Overlapped Appointment.", "Error!",
