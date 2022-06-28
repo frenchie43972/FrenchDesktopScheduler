@@ -40,7 +40,7 @@ namespace FrenchDesktopScheduler
 			MySqlConnection con = new MySqlConnection(constr);
 			con.Open();
 
-			string userID = "SELECT userId FROM user WHERE userID = @USER";
+			string userID = "SELECT userId FROM user WHERE userName = @USER";
 			MySqlCommand getUserIdCmd = new MySqlCommand(userID, con);
 			getUserIdCmd.Connection = con;
 			getUserIdCmd.Parameters.AddWithValue("@USER", getUser);

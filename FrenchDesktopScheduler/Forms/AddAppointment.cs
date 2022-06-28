@@ -68,6 +68,7 @@ namespace FrenchDesktopScheduler.Forms
 			{
 				MessageBox.Show("Overlapped Appointment.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
 
 			}
 			else if (blankComboBox)

@@ -91,8 +91,8 @@ namespace FrenchDesktopScheduler.Forms
 			DateTime now = DateTime.Now;
 			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
 			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
-			//DateTime selectedStart = TimeZoneInfo.ConvertTimeToUtc(editApptStartDateTimePicker.Value);
-			//DateTime selectedEnd = TimeZoneInfo.ConvertTimeToUtc(editApptEndDateTimePicker.Value);
+			//datetime selectedstart = timezoneinfo.converttimetoutc(editapptstartdatetimepicker.value);
+			//datetime selectedend = timezoneinfo.converttimetoutc(editapptenddatetimepicker.value);
 			DateTime selectedStart = editApptStartDateTimePicker.Value;
 			DateTime selectedEnd = editApptEndDateTimePicker.Value;
 
@@ -140,19 +140,29 @@ namespace FrenchDesktopScheduler.Forms
 			{
 				DialogResult result = MessageBox.Show("Are you sure you want to permanently delete this record?", "Delete Item?",
 				MessageBoxButtons.YesNo);
+				if (result == DialogResult.Yes)
+				{
+					string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+					MySqlConnection con = new MySqlConnection(constr);
+					con.Open();
 
-				string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
-				MySqlConnection con = new MySqlConnection(constr);
-				con.Open();
+					int apptID = (int)appointmentDataGridView.SelectedRows[0].Cells[0].Value;
+					string deleteAppt = $"DELETE FROM appointment WHERE appointmentId = {apptID}";
+					MySqlCommand appointmentDelete = new MySqlCommand(deleteAppt, con);
+					appointmentDelete.Prepare();
+					appointmentDelete.ExecuteNonQuery();
 
-				int apptID = (int)appointmentDataGridView.SelectedRows[0].Cells[0].Value;
-				string deleteAppt = $"DELETE FROM appointment WHERE appointmentId = {apptID}";
-				MySqlCommand appointmentDelete = new MySqlCommand(deleteAppt, con);
-				appointmentDelete.Prepare();
-				appointmentDelete.ExecuteNonQuery();
+					con.Close();
+					dgvLoad();
+				}
+				else
+				{
+					MessageBox.Show("Process Canceled.", "Canceled!");
 
-				con.Close();
-				dgvLoad();
+					dgvLoad();
+				}
+
+				
 			}
 			else
 			{
