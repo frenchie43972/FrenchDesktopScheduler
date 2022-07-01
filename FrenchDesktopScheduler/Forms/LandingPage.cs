@@ -17,7 +17,6 @@ namespace FrenchDesktopScheduler.Forms
 		public LandingPage()
 		{
 			InitializeComponent();
-			//apptCheck();
 		}
 
 		private void loginBackButton_Click(object sender, EventArgs e)
@@ -48,28 +47,6 @@ namespace FrenchDesktopScheduler.Forms
 			toReports.Show();
 		}
 
-		//private void apptCheck()
-		//{
-		//	string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
-		//	MySqlConnection con = new MySqlConnection(constr);
-		//	con.Open();
-
-		//	//String checkAppt = @"SELECT start FROM appointment";
-		//	String checkAppt = @"SELECT start FROM appointment WHERE start > NOW() - INTERVAL 15 MINUTE";
-
-		//	MySqlCommand cmd = new MySqlCommand(checkAppt, con);
-		//	MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-		//	DataTable appointmentDT = new DataTable();
-		//	adp.Fill(appointmentDT);
-
-		//	if (appointmentDT.Rows.Count > 0)
-		//	{
-		//		MessageBox.Show("You have an appointment soon.", "ATTENTION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		//	}
-		//	else
-		//	{
-		//		con.Close();
-		//	}
-		//}
+		
 	}
 }

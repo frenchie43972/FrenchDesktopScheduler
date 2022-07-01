@@ -15,7 +15,6 @@ namespace FrenchDesktopScheduler.Forms
 	public partial class Reports : Form
 	{
 
-
 		public Reports()
 		{
 			InitializeComponent();

@@ -126,7 +126,7 @@ namespace FrenchDesktopScheduler
 				}
 			}
 			apptCheck();
-			//WriteLoginToLog();
+			WriteLoginToLog();
 			con.Close();
 		}
 	}
