@@ -36,7 +36,7 @@ namespace FrenchDesktopScheduler.Forms
 
 			String sqlString = @"
 								SELECT appointment.appointmentId, customer.customerName, type, start, end
-								FROM customer, appointment
+								FROM customer, appointment, user
 								WHERE appointment.customerId = customer.customerId";
 
 			MySqlCommand cmd = new MySqlCommand(sqlString, con);
@@ -76,6 +76,7 @@ namespace FrenchDesktopScheduler.Forms
 					ApptTypeTextBox.Text = appointmentDataGridView.SelectedRows[0].Cells[2].Value + string.Empty;
 					editApptStartDateTimePicker.Text = appointmentDataGridView.SelectedRows[0].Cells[3].Value + string.Empty;
 					editApptEndDateTimePicker.Text = appointmentDataGridView.SelectedRows[0].Cells[4].Value + string.Empty;
+					editUserIDTextBox.Text = appointmentDataGridView.SelectedRows[0].Cells[5].Value + string.Empty;
 				}
 			}
 			catch
@@ -177,6 +178,7 @@ namespace FrenchDesktopScheduler.Forms
 			ApptTypeTextBox.Enabled = false;
 			editApptStartDateTimePicker.Enabled = false;
 			editApptEndDateTimePicker.Enabled = false;
+			editUserIDTextBox.Enabled = false;
 		}
 
 		private void textBoxEnable()

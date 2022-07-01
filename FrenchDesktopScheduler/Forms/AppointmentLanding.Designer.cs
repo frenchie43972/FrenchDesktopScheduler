@@ -49,6 +49,8 @@ namespace FrenchDesktopScheduler.Forms
 			this.label1 = new System.Windows.Forms.Label();
 			this.filterWeekRadio = new System.Windows.Forms.RadioButton();
 			this.filterMonthRadio = new System.Windows.Forms.RadioButton();
+			this.editUserIDTextBox = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -216,7 +218,7 @@ namespace FrenchDesktopScheduler.Forms
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.Location = new System.Drawing.Point(419, 267);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(173, 16);
+			this.label1.Size = new System.Drawing.Size(167, 16);
 			this.label1.TabIndex = 93;
 			this.label1.Text = "Filter Appointments By:";
 			// 
@@ -246,11 +248,29 @@ namespace FrenchDesktopScheduler.Forms
 			this.filterMonthRadio.UseVisualStyleBackColor = true;
 			this.filterMonthRadio.CheckedChanged += new System.EventHandler(this.filterMonthRadio_CheckedChanged);
 			// 
+			// editUserIDTextBox
+			// 
+			this.editUserIDTextBox.Location = new System.Drawing.Point(424, 349);
+			this.editUserIDTextBox.Name = "editUserIDTextBox";
+			this.editUserIDTextBox.Size = new System.Drawing.Size(42, 20);
+			this.editUserIDTextBox.TabIndex = 99;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(363, 352);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(43, 13);
+			this.label2.TabIndex = 98;
+			this.label2.Text = "User ID";
+			// 
 			// AppointmentLanding
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.editUserIDTextBox);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.filterMonthRadio);
 			this.Controls.Add(this.filterWeekRadio);
 			this.Controls.Add(this.label1);
@@ -302,5 +322,7 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.RadioButton filterWeekRadio;
 		private System.Windows.Forms.RadioButton filterMonthRadio;
+		private System.Windows.Forms.TextBox editUserIDTextBox;
+		private System.Windows.Forms.Label label2;
 	}
 }

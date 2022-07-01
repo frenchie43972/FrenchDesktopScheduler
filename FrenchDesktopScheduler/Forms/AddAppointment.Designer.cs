@@ -41,6 +41,8 @@ namespace FrenchDesktopScheduler.Forms
 			this.toLandingButton = new System.Windows.Forms.Button();
 			this.addApptSaveButton = new System.Windows.Forms.Button();
 			this.apptCancelButton = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.userIDComboBox = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// customerPageLabel
@@ -154,11 +156,30 @@ namespace FrenchDesktopScheduler.Forms
 			this.apptCancelButton.UseVisualStyleBackColor = true;
 			this.apptCancelButton.Click += new System.EventHandler(this.apptCancelButton_Click);
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(16, 73);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(43, 13);
+			this.label1.TabIndex = 73;
+			this.label1.Text = "User ID";
+			// 
+			// userIDComboBox
+			// 
+			this.userIDComboBox.FormattingEnabled = true;
+			this.userIDComboBox.Location = new System.Drawing.Point(98, 65);
+			this.userIDComboBox.Name = "userIDComboBox";
+			this.userIDComboBox.Size = new System.Drawing.Size(60, 21);
+			this.userIDComboBox.TabIndex = 74;
+			// 
 			// AddAppointment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(386, 464);
+			this.Controls.Add(this.userIDComboBox);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.apptCancelButton);
 			this.Controls.Add(this.addApptSaveButton);
 			this.Controls.Add(this.toLandingButton);
@@ -193,5 +214,7 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.Button toLandingButton;
 		private System.Windows.Forms.Button addApptSaveButton;
 		private System.Windows.Forms.Button apptCancelButton;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox userIDComboBox;
 	}
 }
