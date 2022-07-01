@@ -35,8 +35,8 @@ namespace FrenchDesktopScheduler.Forms
 			con.Open();
 
 			String sqlString = @"
-								SELECT appointment.appointmentId, customer.customerName, type, start, end
-								FROM customer, appointment, user
+								SELECT appointment.appointmentId, customer.customerName, type, start, end, appointment.userId
+								FROM customer, appointment
 								WHERE appointment.customerId = customer.customerId";
 
 			MySqlCommand cmd = new MySqlCommand(sqlString, con);
@@ -92,24 +92,32 @@ namespace FrenchDesktopScheduler.Forms
 			DateTime now = DateTime.Now;
 			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
 			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
-			//datetime selectedstart = timezoneinfo.converttimetoutc(editapptstartdatetimepicker.value);
-			//datetime selectedend = timezoneinfo.converttimetoutc(editapptenddatetimepicker.value);
+
 			DateTime selectedStart = editApptStartDateTimePicker.Value;
 			DateTime selectedEnd = editApptEndDateTimePicker.Value;
 
 			// Ensures all boxes are filled
+			int userID = Convert.ToInt32(editUserIDTextBox.Text);
 			bool isBlank = this.Controls.OfType<TextBox>().Any(tb => string.IsNullOrEmpty(tb.Text));
-			if (isBlank)
+
+			if (OverlapCheck(userID, editApptStartDateTimePicker.Value, editApptEndDateTimePicker.Value))
+			{
+				MessageBox.Show("Overlapped Appointment.", "Error!",
+				MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+
+			}
+			else if (isBlank)
 			{
 				MessageBox.Show("All fields are required to be filled out.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			if (editApptEndDateTimePicker.Value < editApptStartDateTimePicker.Value)
+			else if (editApptEndDateTimePicker.Value < editApptStartDateTimePicker.Value)
 			{
 				MessageBox.Show("End date/time cannot be greater than Start date/time.", "Error!",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			if ((selectedStart.TimeOfDay < businessStart) || (selectedStart.TimeOfDay > businessEnd) || (selectedEnd.TimeOfDay < businessStart) || (selectedEnd.TimeOfDay > businessEnd))
+			else if ((selectedStart.TimeOfDay < businessStart) || (selectedStart.TimeOfDay > businessEnd) || (selectedEnd.TimeOfDay < businessStart) || (selectedEnd.TimeOfDay > businessEnd))
 			{
 				MessageBox.Show("You cannot schedule an appointment outside of business hours.", "Null Error",
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -124,8 +132,8 @@ namespace FrenchDesktopScheduler.Forms
 				MySqlCommand customerUpdate = new MySqlCommand(updateCustomer, con);
 				customerUpdate.Parameters.AddWithValue("@TYPE", ApptTypeTextBox.Text);
 				customerUpdate.Parameters.AddWithValue("@APPTID", apptIDTextBox.Text);
-				customerUpdate.Parameters.AddWithValue("@END", editApptEndDateTimePicker.Value);
-				customerUpdate.Parameters.AddWithValue("@START", editApptStartDateTimePicker.Value);
+				customerUpdate.Parameters.AddWithValue("@END", TimeZoneInfo.ConvertTimeToUtc(editApptEndDateTimePicker.Value));
+				customerUpdate.Parameters.AddWithValue("@START", TimeZoneInfo.ConvertTimeToUtc(editApptStartDateTimePicker.Value));
 				customerUpdate.ExecuteNonQuery();
 
 				con.Close();
@@ -162,7 +170,6 @@ namespace FrenchDesktopScheduler.Forms
 
 					dgvLoad();
 				}
-
 				
 			}
 			else
@@ -219,6 +226,42 @@ namespace FrenchDesktopScheduler.Forms
 			con.Close();
 		}
 
+		private bool OverlapCheck(int userID, DateTime startTime, DateTime endTime)
+		{
+
+			bool results = false;
+
+			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+			MySqlConnection con = new MySqlConnection(constr);
+			con.Open();
+
+			startTime = editApptStartDateTimePicker.Value;
+			endTime = editApptEndDateTimePicker.Value;
+			userID = Convert.ToInt32(editUserIDTextBox.Text);
+
+			string overlapCheck = "SELECT * FROM appointment WHERE userId = @USER AND start BETWEEN @START AND @END";
+
+			MySqlCommand checkOverlap = new MySqlCommand(overlapCheck, con);
+
+			checkOverlap.Parameters.AddWithValue("@START", startTime);
+			checkOverlap.Parameters.AddWithValue("@END", endTime);
+			checkOverlap.Parameters.AddWithValue("@USER", userID);
+			MySqlDataAdapter adp = new MySqlDataAdapter(checkOverlap);
+			DataTable overlapDT = new DataTable();
+			adp.Fill(overlapDT);
+
+			if (overlapDT.Rows.Count > 0)
+			{
+				results = true;
+			}
+			else
+			{
+				results = false;
+			}
+
+			return results;
+		}
+
 		private void filterMonthRadio_CheckedChanged(object sender, EventArgs e)
 		{
 			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
@@ -237,7 +280,5 @@ namespace FrenchDesktopScheduler.Forms
 
 			con.Close();
 		}
-
-		
 	}
 }

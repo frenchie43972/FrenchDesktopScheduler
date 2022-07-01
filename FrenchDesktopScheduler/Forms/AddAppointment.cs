@@ -52,22 +52,7 @@ namespace FrenchDesktopScheduler.Forms
 			TimeSpan businessStart = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0).TimeOfDay;
 			TimeSpan businessEnd = new DateTime(now.Year, now.Month, now.Day, 17, 0, 0).TimeOfDay;
 
-			//DateTime selectedStart = TimeZoneInfo.ConvertTimeToUtc(addApptStartDateTimePicker.Value);
-			//DateTime selectedEnd = TimeZoneInfo.ConvertTimeToUtc(addApptEndDateTimePicker.Value);
-
-			//string startTime = addApptStartDateTimePicker.Text;
-			//string endTime = addApptEndDateTimePicker.Text;
 			int userID = Convert.ToInt32(userIDComboBox.Text);
-
-			//String overlapCheck = @"SELECT * FROM appointment WHERE userId = @USER AND start = @START AND end = @END";
-
-			//MySqlCommand checkOverlap = new MySqlCommand(overlapCheck, con);
-			//checkOverlap.Parameters.AddWithValue("@START", startTime);
-			//checkOverlap.Parameters.AddWithValue("@END", endTime);
-			//checkOverlap.Parameters.AddWithValue("@USER", userID);
-			//MySqlDataAdapter adp = new MySqlDataAdapter(checkOverlap);
-			//DataTable overlapDT = new DataTable();
-			//adp.Fill(overlapDT);
 			
 			if (OverlapCheck(userID, addApptStartDateTimePicker.Value, addApptEndDateTimePicker.Value))
 			{
