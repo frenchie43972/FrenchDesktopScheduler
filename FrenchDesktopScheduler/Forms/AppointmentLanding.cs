@@ -280,5 +280,24 @@ namespace FrenchDesktopScheduler.Forms
 
 			con.Close();
 		}
+
+		private void searchBtn_Click(object sender, EventArgs e)
+		{
+			string constr = ConfigurationManager.ConnectionStrings["MySqlKey"].ConnectionString;
+			MySqlConnection con = new MySqlConnection(constr);
+			con.Open();
+
+			string customerFilter = "SELECT * FROM customer WHERE customerName LIKE '%" + searchAppt.Text + "%' ";
+			MySqlCommand cmd = new MySqlCommand(customerFilter, con);
+			MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+			DataTable monthFilterDT = new DataTable();
+			adp.Fill(monthFilterDT);
+
+			appointmentDataGridView.DataSource = monthFilterDT;
+			appointmentDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			appointmentDataGridView.AllowUserToAddRows = false;
+
+			con.Close();
+		}
 	}
 }

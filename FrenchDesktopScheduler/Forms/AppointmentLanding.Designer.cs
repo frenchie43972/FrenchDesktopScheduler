@@ -51,6 +51,9 @@ namespace FrenchDesktopScheduler.Forms
 			this.filterMonthRadio = new System.Windows.Forms.RadioButton();
 			this.editUserIDTextBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.searchAppt = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.searchBtn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -264,11 +267,40 @@ namespace FrenchDesktopScheduler.Forms
 			this.label2.TabIndex = 98;
 			this.label2.Text = "User ID";
 			// 
+			// searchAppt
+			// 
+			this.searchAppt.Location = new System.Drawing.Point(511, 365);
+			this.searchAppt.Name = "searchAppt";
+			this.searchAppt.Size = new System.Drawing.Size(100, 20);
+			this.searchAppt.TabIndex = 100;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(512, 349);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(88, 13);
+			this.label3.TabIndex = 101;
+			this.label3.Text = "Customer Search";
+			// 
+			// searchBtn
+			// 
+			this.searchBtn.Location = new System.Drawing.Point(525, 391);
+			this.searchBtn.Name = "searchBtn";
+			this.searchBtn.Size = new System.Drawing.Size(75, 23);
+			this.searchBtn.TabIndex = 102;
+			this.searchBtn.Text = "Search";
+			this.searchBtn.UseVisualStyleBackColor = true;
+			this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
+			// 
 			// AppointmentLanding
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.searchBtn);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.searchAppt);
 			this.Controls.Add(this.editUserIDTextBox);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.filterMonthRadio);
@@ -324,5 +356,8 @@ namespace FrenchDesktopScheduler.Forms
 		private System.Windows.Forms.RadioButton filterMonthRadio;
 		private System.Windows.Forms.TextBox editUserIDTextBox;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TextBox searchAppt;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Button searchBtn;
 	}
 }
